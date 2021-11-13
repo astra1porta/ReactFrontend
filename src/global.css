@@ -1,0 +1,58 @@
+main {
+    margin-top: 95px;
+}
+.bg-bidpro {
+    background-color: #83a4c4;
+  }
+.navbar {
+    padding: 0px !important;
+  }
+.card {
+  width: 18rem;
+}
+.navbar-brand {
+    padding: 0px !important;
+  }
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+  }
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255,255,255,.85);
+}
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
+
+@media (max-width: 767px) {
+    .display-3 {
+      font-size: 48px;
+    }
+  }
+
+.table-container {
+    min-width: 800px;
+  }
+.flex-table {
+    display: flex;
+    flex-flow: row wrap;
+    justify-self: center;
+  }
+.flex-table:nth-child(odd) .flex-row {
+    background-color: #f8f8f8;
+  }
+.flex-table:first-of-type .flex-row {
+    background-color: #83a4c4;
+    color: white;
+    border-color: black;
+  }
+.flex-row {
+    width: calc(100% / 7);
+    text-align: center;
+    padding: 1px;
+  }
+  .hidden {
+    display: none;
+  }
