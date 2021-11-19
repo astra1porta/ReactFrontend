@@ -4,6 +4,8 @@ import HeaderView from "../../components/HeaderView";
 import { JumbtroView} from "../../components/JubtroView/JumbtroView";
 import { AirlineView } from "../../components/AirlineView/AirlineView";
 import {FooterView} from "../../components/FooterView/FooterView";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../global.css";
 
 export function HomePage({navBarDropDowns, name, version}) {
   return (
