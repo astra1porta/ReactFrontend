@@ -4,13 +4,9 @@ import VersionView from "../VersionView";
 
 export const JumbtroView = ({ version, name }) => {
   return (
-    <div className="jumbotron d-flex justify-content-center align-items-center">
-      <div>
-        <AdministrationView name={name} />
-        <div className="text-center">
-          <VersionView version={version} />
-        </div>
-      </div>
+    <div className="jumbotron d-flex justify-content-center align-items-center row">
+      <AdministrationView name={name} />
+      <VersionView version={version} />
     </div>
   );
 };

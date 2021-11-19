@@ -1,23 +1,41 @@
 import React from "react";
-import { NavBarView } from "../../components/NavBarView/NavBarView";
+import { CardGroup, Row, Container, Col } from "react-bootstrap";
+import HeaderView from "../../components/HeaderView";
 import { JumbtroView} from "../../components/JubtroView/JumbtroView";
 import { AirlineView } from "../../components/AirlineView/AirlineView";
+import {FooterView} from "../../components/FooterView/FooterView";
 
-export function HomePage({navBarDropDowns, name, version, airlineCards}) {
+export function HomePage({navBarDropDowns, name, version}) {
   return (
+    <>
     <header>
-      <NavBarView navBarDropDowns={navBarDropDowns} />
+      
+      <HeaderView navBarDropDowns={navBarDropDowns} />
+      
+    </header>
+    <Container>
       <div className="d-flex justify-content-center">
         <JumbtroView name={name} version={version} />
       </div>
-      <div >
-        {airlineCards.map((airlineCard) => (
+    </Container>
+      <Container>
+        <CardGroup>
+          
+          <Row xs={1} md={2} className="g-2">
+        {navBarDropDowns.map((airlineCard) => (
+          <Col>
           <AirlineView
-            key={airlineCard.bidTypesPath}
-            airlineCards={airlineCards}
+            bidTypesPath={airlineCard.bidTypesPath}
+            airlineName={airlineCard.airlineName}
           />
+          </Col>
         ))}
-      </div>
-    </header>
+        </Row>
+     
+        </CardGroup>
+      </Container>
+    
+    <FooterView />
+    </>
   );
 }

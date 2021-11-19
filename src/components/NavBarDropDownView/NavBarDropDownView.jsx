@@ -6,14 +6,17 @@ export const NavBarDropDownView = ({
   navBarDropDown: { airlineName, bidTypesPath, pilotsPath },
 }) => {
   return (
-    <NavDropdown
-      id="nav-dropdown-dark-example"
-      title={airlineName}
-      menuVariant="light"
-    >
-      <NavDropdown.Item href={bidTypesPath}>Bid Types</NavDropdown.Item>
-      <NavDropdown.Item href={pilotsPath}>Pilots</NavDropdown.Item>
-    </NavDropdown>
+    <div classname="text-white">
+      <NavDropdown
+        title={airlineName}
+        id="collasible-nav-dropdown"
+        menuVariant="light"
+        align='end'
+     >
+        <NavDropdown.Item href={bidTypesPath} >Bid Types</NavDropdown.Item>
+        <NavDropdown.Item href={pilotsPath}>Pilots</NavDropdown.Item>
+      </NavDropdown>
+    </div>
   );
 };
 

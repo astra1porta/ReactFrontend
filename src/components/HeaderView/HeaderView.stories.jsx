@@ -1,14 +1,14 @@
 import React from "react";
 
-import { NavBarView } from "./NavBarView";
+import { HeaderView } from "./HeaderView";
 import * as DropDownStories from "../NavBarDropDownView/NavBarDropDownView.stories";
 
 export default {
-  title: "Components/NavBarView",
-  component: NavBarView,
+  title: "Components/HeaderView",
+  component: HeaderView,
 };
 
-const Template = (args) => <NavBarView {...args} />;
+const Template = (args) => <HeaderView {...args} />;
 
 //Test on load Behaviour
 export const Loaded = Template.bind({});

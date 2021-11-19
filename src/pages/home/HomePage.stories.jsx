@@ -12,24 +12,6 @@ export const Default = Template.bind({});
 Default.args = {
   name: "Bill Smith",
   version: "1.0.0",
-  airlineCards: [
-    {
-      airlineName: "American Airlines",
-      bidTypesPath: "american-airlines/bidTypes",
-    },
-    {
-      airlineName: "Alaska Airlines",
-      bidTypesPath: "alaska-airlines/bidTypes",
-    },
-    {
-      airlineName: "Frontier Airlines",
-      bidTypesPath: "frontier-airlines/bidTypes",
-    },
-    {
-      airlineName: "UPS",
-      bidTypesPath: "UPS/bidTypes",
-    },
-  ],
   navBarDropDowns: [
     {
       airlineName: "American Airlines",
