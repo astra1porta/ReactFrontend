@@ -3,7 +3,7 @@ import React from "react";
 import { VersionView } from "./VersionView";
 
 export default {
-  title: "Components/VersionView",
+  title: "Components/Version",
   component: VersionView,
 };
 

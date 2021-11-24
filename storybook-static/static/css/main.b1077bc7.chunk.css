@@ -6,24 +6,9 @@ main {
 .bg-bidpro {
     background-color: #83a4c4;
 }
-.btn-color {
-  background-color: rgb(147,179,208) !important;
-  color: #fff !important;
-  border-color: rgb(66, 83, 97) !important;
-}
-.btn-color:hover {
-  color: #fff;
-  background-color: rgb(133, 160, 187);
-}
 /* Styling */
 .bold {
   font-weight: 350;
-}
-.box{
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  
 }
 /* NavBarView */
 .navbar {
@@ -100,3 +85,5 @@ main {
       display: none;
     }
   }
+
+/*# sourceMappingURL=main.b1077bc7.chunk.css.map*/
