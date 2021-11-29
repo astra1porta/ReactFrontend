@@ -9,7 +9,7 @@ import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
 
 export default {
-  title: "Components/Pilot",
+  title: "Components/PilotView",
   component: PilotView,
 };
 

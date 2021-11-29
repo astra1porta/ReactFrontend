@@ -1,11 +1,11 @@
 import React from "react";
 
 import { AABidTypesPage } from "./AABidTypesPage";
-import * as DropDownStories from "../../components/BidTypeView/BidTypeView.stories"
+import * as DropDownStories from "../../components/NavBarDropDownView/NavBarDropDownView";
 
 export default {
-  title: "Page/American Airlines BidTypes",
   component: AABidTypesPage,
+  title: "Page/AABidTypesPage",
 };
 
 const Template = (args) => <AABidTypesPage {...args} />;

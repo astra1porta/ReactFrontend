@@ -9,9 +9,9 @@ import {NavBarDropDownView} from "../NavBarDropDownView/NavBarDropDownView";
 export function HeaderView({navBarDropDowns}) {
   navBarDropDowns = navBarDropDowns || [];
   return (
-    <Navbar collapseOnSelect bg="dark" expand="lg">
+    <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Container fluid className="bg-bidpro ">
-        <Navbar.Brand href="" >
+        <Navbar.Brand href="/" >
           <LogoView />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

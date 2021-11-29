@@ -6,16 +6,15 @@ import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
 import { PilotsListView } from "./PilotsListView";
-import * as DropDownStories from "../NavBarDropDownView/NavBarDropDownView.stories";
 
 export default {
-  title: "Components/Pilots List",
+  title: "Components/PilotListView",
   component: PilotsListView,
 };
 
 const Template = (args) => <PilotsListView {...args} />;
 const avatar = {
-   alex: { src: alex, alt: "Alex" },
+    alex: { src: alex, alt: "Alex" },
     janet: { src: janet, alt: "Janet" },
     john: { src: john, alt: "John" },
     michael: { src: michael, alt: "Michael" },
@@ -25,12 +24,10 @@ const avatar = {
 
 export const Default = Template.bind({});
 Default.args = {
-  bidTypes: [],
-  pilots: []
+   pilots: []
 };
 //Test on load Behaviour
 export const Loaded = Template.bind({});
-
 Loaded.args = {
   pilots: [
     {
@@ -123,87 +120,5 @@ Loaded.args = {
       domicile: "GEG",
       avatar: avatar.janet,
     },
-  ],
-  bidTypes: [
-    {
-      Id: "1",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "2",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "3",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "PDX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "4",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "SEA",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "5",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "6",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-  ],
-  navBarDropDowns: [
-    {
-      ...DropDownStories.Default.args.navBarDropDowns,
-      airlineName: "American Airlines",
-      bidTypesPath: "american-airlines/bidTypes",
-      pilotsPath: "american-airlines/pilots",
-    },
-    {
-      ...DropDownStories.Default.args.navBarDropDowns,
-      airlineName: "Alaska Airlines",
-      bidTypesPath: "alaska-airlines/bidTypes",
-      pilotsPath: "alaska-airlines/pilots",
-    },
-    {
-      ...DropDownStories.Default.args.navBarDropDowns,
-      airlineName: "Frontier Airlines",
-      bidTypesPath: "frontier-airlines/bidTypes",
-      pilotsPath: "frontier-airlines/pilots",
-    },
-    {
-      ...DropDownStories.Default.args.navBarDropDowns,
-      airlineName: "UPS",
-      bidTypesPath: "UPS/bidTypes",
-      pilotsPath: "UPS/pilots",
-    },
-  ],
+  ]
 };

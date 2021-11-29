@@ -6,11 +6,11 @@ import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
 import { PilotsPage } from "./PilotsPage";
-import * as DropDownStories from "../../components/BidTypeView/BidTypeView.stories"
+import * as DropDownStories from "../../components/NavBarDropDownView/NavBarDropDownView";
 
 export default {
-  title: "Page/American Airlines PilotsPage",
   component: PilotsPage,
+  title: "Page/PilotsPage",
 };
 const avatar = {
   alex: { src: alex, alt: "Alex" },
@@ -114,118 +114,6 @@ Default.args = {
       seat: "FO",
       domicile: "GEG",
       avatar: avatar.janet,
-    },
-  ],
-  bidTypes: [
-    {
-      Id: "1",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "2",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "3",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "PDX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "4",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "SEA",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "5",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "6",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-  ],
-  bidTypes: [
-    {
-      Id: "1",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "2",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "3",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "PDX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "4",
-      fleet: "73G",
-      seat: "CAPTAIN",
-      domicile: "SEA",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "5",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "ANC",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
-    },
-    {
-      Id: "6",
-      fleet: "73G",
-      seat: "FIRST OFFICER",
-      domicile: "LAX",
-      status: 1,
-      bidPeriods: 1,
-      imported: "Nov 1 2017 12:00AM",
     },
   ],
   navBarDropDowns: [
