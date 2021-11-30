@@ -13,8 +13,12 @@ export const NavBarDropDownView = ({
         menuVariant="light"
         align='end'
      >
-        <NavDropdown.Item href={bidTypesPath} >Bid Types</NavDropdown.Item>
-        <NavDropdown.Item href={pilotsPath}>Pilots</NavDropdown.Item>
+       <NavDropdown.Item href={bidTypesPath}>
+          Bid Types
+        </NavDropdown.Item>
+        <NavDropdown.Item href={pilotsPath}>
+          Pilots
+        </NavDropdown.Item>
       </NavDropdown>
     </div>
   );
