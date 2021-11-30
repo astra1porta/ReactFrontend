@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {HeaderView} from "../../components/HeaderView/HeaderView";
-import {FooterView} from "../../components/FooterView/FooterView";
-import {Container, Row} from 'react-bootstrap';
-import {PilotView} from "../../components/PilotView/PilotView";
+import { HeaderView } from "../../components/HeaderView/HeaderView";
+import { FooterView } from "../../components/FooterView/FooterView";
+import { Container, Row } from "react-bootstrap";
+import { PilotView } from "../../components/PilotView/PilotView";
 
 export function PilotsPage({ pilots, navBarDropDowns }) {
   return (
     <>
-      <header>
-        <HeaderView navBarDropDowns={navBarDropDowns} />
-      </header>
+      <HeaderView navBarDropDowns={navBarDropDowns} />
       <Container>
         <Row>
           <h1>Pilots</h1>

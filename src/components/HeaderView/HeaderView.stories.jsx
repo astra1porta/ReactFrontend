@@ -11,8 +11,8 @@ export default {
 const Template = (args) => <HeaderView {...args} />;
 
 //Test on load Behaviour
-export const Loaded = Template.bind({});
-Loaded.args = {
+export const Default = Template.bind({});
+Default.args = {
   navBarDropDowns: [
     {
       ...DropDownStories.Default.args.navBarDropDowns,
