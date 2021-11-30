@@ -1,16 +1,52 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HeaderView from "../../components/HeaderView";
-import { BidTypesListView } from "../../components/BidTypesListView/BidTypesListView";
+import { BidTypeHeaderView } from "../../components/BidTypeHeaderView/BidTypeHeaderView";
+import {Container, Row, Col} from "react-bootstrap";
+import {ButtonColView} from "../../components/ButtonColView/ButtonColView";
 
 
 export function AABidTypesPage({bidTypes, navBarDropDowns}) {
   return (
     <>
-    <header>
-      <HeaderView navBarDropDowns={navBarDropDowns} />
-    </header>
-      <BidTypesListView bidTypes = {bidTypes} />
+      <header>
+        <HeaderView navBarDropDowns={navBarDropDowns} />
+      </header>
+      <Container>
+        <h1>Bid Types</h1>
+
+        <BidTypeHeaderView />
+
+        {Array.isArray(bidTypes) && bidTypes.length === 0 ? (
+          <Row>
+            <Col colSpan="6">No Bid Types Available </Col>
+          </Row>
+        ) : (
+          bidTypes.map((bidType) => (
+            <Row
+              key={bidType.Id}
+              className={
+                bidType.Id % 2 !== 0
+                  ? "d-flex align-items-center text-center bg-gray py-2"
+                  : "d-flex align-items-center text-center py-2"
+              }
+            >
+              <Col className="d-flex justify-self-start col-1">
+                {bidType.Id}
+              </Col>
+              <Col className="d-flex justify-self-start">
+                {bidType.fleet} {bidType.seat} {bidType.domicile}
+              </Col>
+              <Col>{bidType.status === 1 ? "CURRENT" : "IMPORTING"}</Col>
+              <Col>{bidType.bidPeriods}</Col>
+              <Col>{bidType.imported}</Col>
+              <Col>
+                <ButtonColView />
+              </Col>
+            </Row>
+          ))
+        )}
+      </Container>
     </>
   );
 }

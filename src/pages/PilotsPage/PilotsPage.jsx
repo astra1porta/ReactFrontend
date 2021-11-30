@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {HeaderView} from "../../components/HeaderView/HeaderView";
 import {FooterView} from "../../components/FooterView/FooterView";
-import { PilotsListView } from "../../components/PilotsListView/PilotsListView";
+import {Container, Row} from 'react-bootstrap';
+import {PilotView} from "../../components/PilotView/PilotView";
 
 export function PilotsPage({ pilots, navBarDropDowns }) {
   return (
@@ -10,7 +11,19 @@ export function PilotsPage({ pilots, navBarDropDowns }) {
       <header>
         <HeaderView navBarDropDowns={navBarDropDowns} />
       </header>
-      <PilotsListView pilots={pilots} />
+      <Container>
+        <Row>
+          <h1>Pilots</h1>
+          <p>
+            Home / App Views / <bold>Contacts</bold>
+          </p>
+        </Row>
+        <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
+          {pilots.map((pilot) => (
+            <PilotView pilot={pilot} avatar={pilot.avatar} />
+          ))}
+        </Row>
+      </Container>
       <FooterView />
     </>
   );

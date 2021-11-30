@@ -6,7 +6,7 @@ import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
 import { PilotsPage } from "./PilotsPage";
-import * as DropDownStories from "../../components/NavBarDropDownView/NavBarDropDownView";
+import * as DropDownStories from "../../components/NavBarDropDownView/";
 
 export default {
   component: PilotsPage,
