@@ -1,7 +1,6 @@
 import React from "react";
 
 import { AABidTypesPage } from "./AABidTypesPage";
-import * as DropDownStories from "../../components/NavBarDropDownView/NavBarDropDownView";
 
 export default {
   component: AABidTypesPage,
@@ -70,25 +69,21 @@ Default.args = {
   ],
   navBarDropDowns: [
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "American Airlines",
       bidTypesPath: "american-airlines/bidTypes",
       pilotsPath: "american-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Alaska Airlines",
       bidTypesPath: "alaska-airlines/bidTypes",
       pilotsPath: "alaska-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Frontier Airlines",
       bidTypesPath: "frontier-airlines/bidTypes",
       pilotsPath: "frontier-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "UPS",
       bidTypesPath: "UPS/bidTypes",
       pilotsPath: "UPS/pilots",

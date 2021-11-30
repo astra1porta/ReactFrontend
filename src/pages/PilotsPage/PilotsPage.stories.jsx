@@ -6,7 +6,6 @@ import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
 import { PilotsPage } from "./PilotsPage";
-import * as DropDownStories from "../../components/NavBarDropDownView/";
 
 export default {
   component: PilotsPage,
@@ -118,25 +117,21 @@ Default.args = {
   ],
   navBarDropDowns: [
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "American Airlines",
       bidTypesPath: "american-airlines/bidTypes",
       pilotsPath: "american-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Alaska Airlines",
       bidTypesPath: "alaska-airlines/bidTypes",
       pilotsPath: "alaska-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Frontier Airlines",
       bidTypesPath: "frontier-airlines/bidTypes",
       pilotsPath: "frontier-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "UPS",
       bidTypesPath: "UPS/bidTypes",
       pilotsPath: "UPS/pilots",
