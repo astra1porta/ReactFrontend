@@ -5,7 +5,6 @@ import { BidTypeHeaderView } from "../../components/BidTypeHeaderView/BidTypeHea
 import {Container, Row, Col} from "react-bootstrap";
 import {ButtonColView} from "../../components/ButtonColView/ButtonColView";
 
-
 export function AABidTypesPage({bidTypes, navBarDropDowns}) {
   return (
     <>
@@ -51,18 +50,18 @@ export function AABidTypesPage({bidTypes, navBarDropDowns}) {
   );
 }
 AABidTypesPage.propTypes = {
-  navBarDropDowns: PropTypes.shape({
+  navBarDropDowns: PropTypes.arrayOf(PropTypes.shape({
     airlineName: PropTypes.string.isRequired,
     bidTypesPath: PropTypes.string.isRequired,
     pilotsPath: PropTypes.string.isRequired,
-  }),
-  bidTypes: PropTypes.shape({
+  })),
+  bidTypes: PropTypes.arrayOf(PropTypes.shape({
     Id: PropTypes.string.isRequired,
     fleet: PropTypes.string.isRequired,
-    seet: PropTypes.string.isRequired,
+    seat: PropTypes.string.isRequired,
     domicile: PropTypes.string.isRequired,
     status: PropTypes.number.isRequired,
     bidPeriods: PropTypes.number.isRequired,
     imported: PropTypes.string.isRequired,
-  }),
+  })),
 };

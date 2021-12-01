@@ -21,21 +21,21 @@ export const PilotView = ({avatar, pilot}) => {
         </Col>
         <Col className="col-md-8">
           <div className="card-body">
-            <h4 className="card-title">{pilot.name}</h4>
-            <p className="card-text">
+            <div className="card-title bold larger">{pilot.name}</div>
+            <div className="card-text">
               <span className="text-secondary">
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
               </span>{" "}
               {pilot.location}
-            </p>
-            <p className="card-title">
+            </div>
+            <div className="card-title">
               <h5>{pilot.company}</h5>
-            </p>
-            <p className="card-text">
+            </div>
+            <div className="card-text">
               <div>{pilot.address}{pilot.address2 ? ", "+pilot.address2 : ""}</div>
               <div>{pilot.city}{", "}{pilot.state}{"  "}{pilot.postalCode}</div>
               <div>P: {pilot.phone}</div>
-            </p>
+            </div>
           </div>
         </Col>
       </Row>

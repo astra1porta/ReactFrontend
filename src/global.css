@@ -22,6 +22,9 @@ main {
 bold {
   font-weight: 600;
 }
+.larger {
+  font-size: larger;
+}
 .bold {
   font-weight: 600;
 }

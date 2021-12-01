@@ -2,11 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { Navbar, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import {} from "react-bootstrap";
 import { LogoView } from "../LogoView/LogoView";
 import NavBarView from "../NavBarView";
-import { NavBarDropDownView } from "../NavBarDropDownView/NavBarDropDownView";
 
 export function HeaderView({ navBarDropDowns }) {
   navBarDropDowns = navBarDropDowns || [];
@@ -27,6 +24,10 @@ export function HeaderView({ navBarDropDowns }) {
 
 HeaderView.propTypes = {
   navBarDropDowns: PropTypes.arrayOf(
-    NavBarDropDownView.propTypes.navBarDropDown
-  ).isRequired,
+    PropTypes.shape({
+      airlineName: PropTypes.string.isRequired,
+      bidTypesPath: PropTypes.string.isRequired,
+      pilotsPath: PropTypes.string.isRequired,
+    })
+  ),
 };

@@ -4,7 +4,7 @@ import { AABidTypesPage } from "./AABidTypesPage";
 
 export default {
   component: AABidTypesPage,
-  title: "Page/AABidTypesPage",
+  title: "Pages/AABidTypesPage",
 };
 
 const Template = (args) => <AABidTypesPage {...args} />;

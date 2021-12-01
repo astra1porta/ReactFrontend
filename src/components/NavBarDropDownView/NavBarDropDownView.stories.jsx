@@ -12,9 +12,9 @@ export default {
 export const Default = Template.bind({});
 Default.args = {
   navBarDropDown: {
-    airlineName: "Test",
-    bidTypesPath: "test",
-    pilotsPath: "test",
+    airlineName: "Airline Name",
+    bidTypesPath: "airline/bidtypes",
+    pilotsPath: "airline/pilots",
   },
 };
 

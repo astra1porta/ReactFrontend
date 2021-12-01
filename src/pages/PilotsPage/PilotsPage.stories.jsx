@@ -9,7 +9,7 @@ import { PilotsPage } from "./PilotsPage";
 
 export default {
   component: PilotsPage,
-  title: "Page/PilotsPage",
+  title: "Pages/PilotsPage",
 };
 const avatar = {
   alex: { src: alex, alt: "Alex" },

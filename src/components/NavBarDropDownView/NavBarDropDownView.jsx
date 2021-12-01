@@ -6,7 +6,7 @@ export const NavBarDropDownView = ({
   navBarDropDown: { airlineName, bidTypesPath, pilotsPath },
 }) => {
   return (
-    <div classname="text-white">
+    <div>
       <NavDropdown
         title={airlineName}
         id="collasible-nav-dropdown"
@@ -25,6 +25,10 @@ export const NavBarDropDownView = ({
 };
 
 NavBarDropDownView.propTypes = {
-  navBarDropDown: PropTypes.func.isRequired,
+  navBarDropDown: PropTypes.shape({
+    airlineName: PropTypes.string.isRequired,
+    bidTypesPath: PropTypes.string.isRequired,
+    pilotsPath: PropTypes.string.isRequired
+  }).isRequired,
 
 };

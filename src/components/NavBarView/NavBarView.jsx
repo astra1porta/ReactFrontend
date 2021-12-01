@@ -11,10 +11,10 @@ export function NavBarView({navBarDropDowns}) {
 
           <Nav className="ms-auto bg-bidpro text-light">
             {
-              navBarDropDowns.map((navBarDropDown) => 
-              <NavBarDropDownView key={navBarDropDown.bidTypesPath} navBarDropDown={navBarDropDown} />
+              navBarDropDowns.map((navBarDropDown, ctr) => 
+              <NavBarDropDownView key={ctr} navBarDropDown={navBarDropDown} />
               )
-            } 
+            }
           </Nav>
         
 </>
@@ -22,6 +22,12 @@ export function NavBarView({navBarDropDowns}) {
 };
 
 NavBarView.propTypes = {
-  navBarDropDowns: PropTypes.arrayOf(NavBarDropDownView.propTypes.navBarDropDown).isRequired,
+  navBarDropDowns: PropTypes.arrayOf(
+    PropTypes.shape({
+      airlineName: PropTypes.string.isRequired,
+      bidTypesPath: PropTypes.string.isRequired,
+      pilotsPath: PropTypes.string.isRequired,
+    })
+  ),
 };
 

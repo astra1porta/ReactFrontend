@@ -23,8 +23,8 @@ export function HomePage({name, version, navBarDropDowns}) {
     
         <CardGroup>
           <Row xs={1} md={2} className="g-2">
-            {navBarDropDowns.map((airlineCard) => (
-              <Col>
+            {navBarDropDowns.map((airlineCard, ctr) => (
+              <Col key={ctr}>
                 <AirlineView
                   bidTypesPath={airlineCard.bidTypesPath}
                   airlineName={airlineCard.airlineName}
@@ -39,12 +39,13 @@ export function HomePage({name, version, navBarDropDowns}) {
   );
 }
 HomePage.propTypes = {
-  name: PropTypes.string.isRequired,
-  version: PropTypes.string.isRequired,
-  navBarDropDowns: PropTypes.shape({
+ 
+  name: PropTypes.string,
+  version: PropTypes.string,
+  navBarDropDowns: PropTypes.arrayOf(PropTypes.shape({
     airlineName: PropTypes.string.isRequired,
     bidTypesPath: PropTypes.string.isRequired,
     pilotsPath: PropTypes.string.isRequired,
-  })
+  })),
   
 };

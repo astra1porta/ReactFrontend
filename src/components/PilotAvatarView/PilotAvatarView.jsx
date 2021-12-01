@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 
 export const PilotAvatarView = ({ avatar}) => {
@@ -9,4 +10,7 @@ export const PilotAvatarView = ({ avatar}) => {
       alt={avatar.alt}
     />
   );
+};
+PilotAvatarView.propTypes = {
+  avatar: PropTypes.object.isRequired,
 };
