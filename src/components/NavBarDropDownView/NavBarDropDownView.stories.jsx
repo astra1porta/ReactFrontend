@@ -3,7 +3,7 @@ import React from "react";
 import { NavBarDropDownView } from "./NavBarDropDownView";
 
 export default {
-  title: "Components/NavBarDropDownView",
+  title: "Interactive Components/NavBarDropDownView",
   component: NavBarDropDownView,
 };
 

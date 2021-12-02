@@ -24,10 +24,10 @@ export function AABidTypesPage({bidTypes, navBarDropDowns}) {
           bidTypes.map((bidType) => (
             <Row
               key={bidType.Id}
-              className={
-                bidType.Id % 2 !== 0
-                  ? "d-flex align-items-center text-center bg-gray py-2"
-                  : "d-flex align-items-center text-center py-2"
+              className={`d-flex align-items-center text-center py-2 ${bidType.Id % 2 !== 0
+                
+                  ? "bg-gray"
+                  : ""}`
               }
             >
               <Col className="d-flex justify-self-start col-1">
