@@ -1,5 +1,6 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import alex from "./assets/img/alex-johnathan.jpeg";
 import janet from "./assets/img/janet-carton.jpeg";
 import john from "./assets/img/john-smith.jpeg";
@@ -7,10 +8,17 @@ import michael from "./assets/img/michael-zimber.jpeg";
 import monica from "./assets/img/monica-smith.jpeg";
 import sandra from "./assets/img/sandra-smith.jpeg";
 import HomePage from "./pages/home";
-import AABidTypesPage from "./pages/AABidTypesPage";
-import AAPilotsPage from "./pages/PilotsPage";
+import AABidTypesPage from "./pages/american-airlines/bidtypes";
+import AAPilotsPage from "./pages/american-airlines/pilots";
+import ASBidTypesPage from "./pages/alaska-airlines/bidtypes";
+import ASPilotsPage from "./pages/alaska-airlines/pilots";
+import FABidTypesPage from "./pages/frontier-airlines/bidtypes";
+import FAPilotsPage from "./pages/frontier-airlines/pilots";
+import UPSBidTypesPage from "./pages/ups/bidtypes";
+import UPSPilotsPage from "./pages/ups/pilots";
+import { selectPilots } from "./redux/features/pilotsSlice";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const avatar = {
@@ -22,94 +30,112 @@ function App() {
     sandra: { src: sandra, alt: "Sandra" },
   };
   const db = {
-    name: "Bill Smith",
+    firstName: "Bill Smith",
     version: "1.0.0",
     pilots: [
       {
-        name: "John Smith",
-        location: "Riviera State 32/106",
+        firstName: "John",
+        lastName: "Smith",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "CPT",
         domicile: "GEG",
         avatar: avatar.john,
       },
       {
-        name: "Alex Johnathan",
-        location: "Riviera State 32/106",
+        firstName: "Alex",
+        lastName: "Johnathan",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "CPT",
         domicile: "GEG",
         avatar: avatar.alex,
       },
       {
-        name: "Monica Smith",
-        location: "Riviera State 32/106",
+        firstName: "Monica",
+        lastName: "Smith",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "CPT",
         domicile: "GEG",
         avatar: avatar.monica,
       },
       {
-        name: "Michael Zimber",
-        location: "Riviera State 32/106",
+        firstName: "Michael",
+        lastName: "Zimber",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "CPT",
         domicile: "GEG",
         avatar: avatar.michael,
       },
       {
-        name: "Sandra Smith",
-        location: "Riviera State 32/106",
+        firstName: "Sandra",
+        lastName: "Smith",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "CPT",
         domicile: "GEG",
         avatar: avatar.sandra,
       },
       {
-        name: "Janet Carton",
-        location: "Riviera State 32/106",
+        firstName: "Janet",
+        lastName: "Carton",
+        trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
         address: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
         postalCode: "94107",
-        phone: "(123) 456-7890",
+        areaCode: "123",
+        prefix: "456",
+        suffix: "7890",
         fleet: "737",
         seat: "FO",
         domicile: "GEG",
@@ -195,21 +221,94 @@ function App() {
       },
     ],
   };
+
+  
+
   return (
     <Router>
       <Routes>
         <Route
           path=""
-          element={<HomePage navBarDropDowns={db.navBarDropDowns} name={db.name} version={db.version} />}
+          element={
+            <HomePage
+              navBarDropDowns={db.navBarDropDowns}
+              name={db.name}
+              version={db.version}
+            />
+          }
         />
-        <Route path="american-airlines/bidTypes" element={<AABidTypesPage navBarDropDowns={db.navBarDropDowns} bidTypes={db.bidTypes} />} />
-        <Route path="alaska-airlines/bidTypes" element={<HomePage />} />
-        <Route path="frontier-airlines/bidTypes" element={<HomePage />} />
-        <Route path="UPS-airlines/bidTypes" element={<HomePage />} />
-        <Route path="american-airlines/pilots" element={<AAPilotsPage navBarDropDowns={db.navBarDropDowns} pilots={db.pilots} />} />
-        <Route path="alaska-airlines/pilots" element={<HomePage />} />
-        <Route path="frontier-airlines/pilots" element={<HomePage />} />
-        <Route path="UPS-airlines/pilots" element={<HomePage />} />
+        <Route
+          path="american-airlines/bidTypes"
+          element={
+            <AABidTypesPage
+              navBarDropDowns={db.navBarDropDowns}
+              bidTypes={db.bidTypes}
+            />
+          }
+        />
+        <Route
+          path="alaska-airlines/bidTypes"
+          element={
+            <ASBidTypesPage
+              navBarDropDowns={db.navBarDropDowns}
+              bidTypes={db.bidTypes}
+            />
+          }
+        />
+        <Route
+          path="frontier-airlines/bidTypes"
+          element={
+            <FABidTypesPage
+              navBarDropDowns={db.navBarDropDowns}
+              bidTypes={db.bidTypes}
+            />
+          }
+        />
+        <Route
+          path="UPS/bidTypes"
+          element={
+            <UPSBidTypesPage
+              navBarDropDowns={db.navBarDropDowns}
+              bidTypes={db.bidTypes}
+            />
+          }
+        />
+        <Route
+          path="american-airlines/pilots"
+          element={
+            <AAPilotsPage
+              navBarDropDowns={db.navBarDropDowns}
+              pilots={db.pilots}
+            />
+          }
+        />
+        <Route
+          path="alaska-airlines/pilots"
+          element={
+            <ASPilotsPage
+              navBarDropDowns={db.navBarDropDowns}
+              pilots={db.pilots}
+            />
+          }
+        />
+        <Route
+          path="frontier-airlines/pilots"
+          element={
+            <FAPilotsPage
+              navBarDropDowns={db.navBarDropDowns}
+              pilots={db.pilots}
+            />
+          }
+        />
+        <Route
+          path="UPS/pilots"
+          element={
+            <UPSPilotsPage
+              navBarDropDowns={db.navBarDropDowns}
+              pilots={db.pilots}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

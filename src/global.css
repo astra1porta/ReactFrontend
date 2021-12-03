@@ -1,13 +1,13 @@
 /* Main, body, elements*/
 main {
-    margin-top: 95px;
+  margin-top: 95px;
 }
 /* Common Themes */
 .bg-bidpro {
-    background-color: #83a4c4;
+  background-color: #83a4c4;
 }
 .btn-color {
-  background-color: rgb(147,179,208) !important;
+  background-color: rgb(147, 179, 208) !important;
   color: #fff !important;
   border-color: rgb(66, 83, 97) !important;
 }
@@ -34,67 +34,73 @@ bold {
 
 /* NavBarView */
 .navbar {
-    padding: 0px !important;
+  padding: 0px !important;
 }
 .navbar-brand {
-    padding: 0px !important;
+  padding: 0px !important;
 }
 /* AirlineView */
 .card-group {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 /* JubtroView */
 .sub-heading {
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   width: 100%;
 }
+/* Form formatting */
+.small-thin-input {
+  height: 20px;
+  position: relative;
+  top: 5px;
+  max-width: 60px !important;
+}
 @media (max-width: 768px) {
-    .display-3 {
-      font-size: 32px;
-    }
+  .display-3 {
+    font-size: 32px;
   }
+}
 .table-container {
-    min-width: 800px;
-  }
+  min-width: 800px;
+}
 .flex-table {
-    display: flex;
-    flex-flow: row wrap;
-    justify-self: center;
-  }
+  display: flex;
+  flex-flow: row wrap;
+  justify-self: center;
+}
 .flex-table:nth-child(odd) .flex-row {
-    background-color: #f8f8f8;
-  }
+  background-color: #f8f8f8;
+}
 .flex-table:first-of-type .flex-row {
-    background-color: #83a4c4;
-    color: white;
-    border-color: black;
-  }
+  background-color: #83a4c4;
+  color: white;
+  border-color: black;
+}
 .flex-row {
-    width: calc(100% / 7);
-    text-align: center;
-    padding: 1px;
+  width: calc(100% / 7);
+  text-align: center;
+  padding: 1px;
+}
+.hidden {
+  display: none;
+}
+@media (max-width: 1200px) and (min-width: 769px) {
+  .display-3 {
+    font-size: 48;
   }
-  .hidden {
+}
+@media (max-width: 568px) {
+  .display-3 {
+    font-size: 24px;
+  }
+  .container-fluid img {
     display: none;
   }
-  @media (max-width: 1200px) and (min-width: 769px) {
-    .display-3 {
-      font-size: 48;
-    }
-    
-  }
-  @media (max-width: 568px) {
-    .display-3 {
-      font-size: 24px;
-    }
-    .container-fluid img{
-      display: none;
-    }
-  }
+}

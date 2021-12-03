@@ -3,7 +3,7 @@ import React from "react";
 import { HeaderView } from "./HeaderView";
 
 export default {
-  title: "Components/HeaderView",
+  title: "Interactive Components/HeaderView",
   component: HeaderView,
 };
 

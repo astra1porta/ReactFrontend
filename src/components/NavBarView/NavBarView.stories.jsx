@@ -1,10 +1,9 @@
 import React from "react";
 
 import { NavBarView } from "./NavBarView";
-import * as DropDownStories from "../NavBarDropDownView/NavBarDropDownView.stories";
 
 export default {
-  title: "Components/NavBarView",
+  title: "Interactive Components/NavBarView",
   component: NavBarView,
 };
 
@@ -15,28 +14,24 @@ export const Loaded = Template.bind({});
 Loaded.args = {
   navBarDropDowns: [
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "American Airlines",
-      bidTypesPath: "american-airlines/bidTypes",
-      pilotsPath: "american-airlines/pilots",
+      bidTypesPath: "/american-airlines/bidTypes",
+      pilotsPath: "/american-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Alaska Airlines",
-      bidTypesPath: "alaska-airlines/bidTypes",
-      pilotsPath: "alaska-airlines/pilots",
+      bidTypesPath: "/alaska-airlines/bidTypes",
+      pilotsPath: "/alaska-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "Frontier Airlines",
-      bidTypesPath: "frontier-airlines/bidTypes",
-      pilotsPath: "frontier-airlines/pilots",
+      bidTypesPath: "/frontier-airlines/bidTypes",
+      pilotsPath: "/frontier-airlines/pilots",
     },
     {
-      ...DropDownStories.Default.args.navBarDropDowns,
       airlineName: "UPS",
-      bidTypesPath: "UPS/bidTypes",
-      pilotsPath: "UPS/pilots",
+      bidTypesPath: "/UPS/bidTypes",
+      pilotsPath: "/UPS/pilots",
     },
   ],
 };

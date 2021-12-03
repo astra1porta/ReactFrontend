@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HeaderView from "../../components/HeaderView";
-import { BidTypeHeaderView } from "../../components/BidTypeHeaderView/BidTypeHeaderView";
+import HeaderView from "../../../components/HeaderView";
+import { BidTypeHeaderView } from "../../../components/BidTypeHeaderView/BidTypeHeaderView";
 import {Container, Row, Col} from "react-bootstrap";
-import {ButtonColView} from "../../components/ButtonColView/ButtonColView";
+import {ButtonColView} from "../../../components/ButtonColView/ButtonColView";
 
-export function AABidTypesPage({bidTypes, navBarDropDowns}) {
+export function UPSBidTypesPage({ bidTypes, navBarDropDowns }) {
   return (
     <>
       <header>
         <HeaderView navBarDropDowns={navBarDropDowns} />
       </header>
       <Container>
-        <h1>Bid Types</h1>
+        <h1>UPS Bid Types</h1>
 
         <BidTypeHeaderView />
 
@@ -24,11 +24,9 @@ export function AABidTypesPage({bidTypes, navBarDropDowns}) {
           bidTypes.map((bidType) => (
             <Row
               key={bidType.Id}
-              className={`d-flex align-items-center text-center py-2 ${bidType.Id % 2 !== 0
-                
-                  ? "bg-gray"
-                  : ""}`
-              }
+              className={`d-flex align-items-center text-center py-2 ${
+                bidType.Id % 2 !== 0 ? "bg-gray" : ""
+              }`}
             >
               <Col className="d-flex justify-self-start col-1">
                 {bidType.Id}
@@ -49,19 +47,23 @@ export function AABidTypesPage({bidTypes, navBarDropDowns}) {
     </>
   );
 }
-AABidTypesPage.propTypes = {
-  navBarDropDowns: PropTypes.arrayOf(PropTypes.shape({
-    airlineName: PropTypes.string.isRequired,
-    bidTypesPath: PropTypes.string.isRequired,
-    pilotsPath: PropTypes.string.isRequired,
-  })),
-  bidTypes: PropTypes.arrayOf(PropTypes.shape({
-    Id: PropTypes.string.isRequired,
-    fleet: PropTypes.string.isRequired,
-    seat: PropTypes.string.isRequired,
-    domicile: PropTypes.string.isRequired,
-    status: PropTypes.number.isRequired,
-    bidPeriods: PropTypes.number.isRequired,
-    imported: PropTypes.string.isRequired,
-  })),
+UPSBidTypesPage.propTypes = {
+  navBarDropDowns: PropTypes.arrayOf(
+    PropTypes.shape({
+      airlineName: PropTypes.string.isRequired,
+      bidTypesPath: PropTypes.string.isRequired,
+      pilotsPath: PropTypes.string.isRequired,
+    })
+  ),
+  bidTypes: PropTypes.arrayOf(
+    PropTypes.shape({
+      Id: PropTypes.string.isRequired,
+      fleet: PropTypes.string.isRequired,
+      seat: PropTypes.string.isRequired,
+      domicile: PropTypes.string.isRequired,
+      status: PropTypes.number.isRequired,
+      bidPeriods: PropTypes.number.isRequired,
+      imported: PropTypes.string.isRequired,
+    })
+  ),
 };

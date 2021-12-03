@@ -1,15 +1,15 @@
 import React from "react";
-import alex from "../../assets/img/alex-johnathan.jpeg";
-import janet from "../../assets/img/janet-carton.jpeg";
-import john from "../../assets/img/john-smith.jpeg";
-import michael from "../../assets/img/michael-zimber.jpeg";
-import monica from "../../assets/img/monica-smith.jpeg";
-import sandra from "../../assets/img/sandra-smith.jpeg";
-import { PilotsPage } from "./PilotsPage";
+import alex from "../../../assets/img/alex-johnathan.jpeg";
+import janet from "../../../assets/img/janet-carton.jpeg";
+import john from "../../../assets/img/john-smith.jpeg";
+import michael from "../../../assets/img/michael-zimber.jpeg";
+import monica from "../../../assets/img/monica-smith.jpeg";
+import sandra from "../../../assets/img/sandra-smith.jpeg";
+import { UPSPilotsPage } from "./UPSPilotsPage";
 
 export default {
-  component: PilotsPage,
-  title: "Pages/PilotsPage",
+  component: UPSPilotsPage,
+  title: "Pages | Pilots/UPS Pilots Page",
 };
 const avatar = {
   alex: { src: alex, alt: "Alex" },
@@ -19,96 +19,108 @@ const avatar = {
   monica: { src: monica, alt: "Monica" },
   sandra: { src: sandra, alt: "Sandra" },
 };
-const Template = (args) => <PilotsPage {...args} />;
+const Template = (args) => <UPSPilotsPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   pilots: [
     {
-      name: "John Smith",
-      location: "Riviera State 32/106",
+      firstName: "John Smith",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "CPT",
       domicile: "GEG",
       avatar: avatar.john,
     },
     {
-      name: "Alex Johnathan",
-      location: "Riviera State 32/106",
+      firstName: "Alex Johnathan",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "CPT",
       domicile: "GEG",
       avatar: avatar.alex,
     },
     {
-      name: "Monica Smith",
-      location: "Riviera State 32/106",
+      firstName: "Monica Smith",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "CPT",
       domicile: "GEG",
       avatar: avatar.monica,
     },
     {
-      name: "Michael Zimber",
-      location: "Riviera State 32/106",
+      firstName: "Michael Zimber",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "CPT",
       domicile: "GEG",
       avatar: avatar.michael,
     },
     {
-      name: "Sandra Smith",
-      location: "Riviera State 32/106",
+      firstName: "Sandra Smith",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "CPT",
       domicile: "GEG",
       avatar: avatar.sandra,
     },
     {
-      name: "Janet Carton",
-      location: "Riviera State 32/106",
+      firstName: "Janet Carton",
+      trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
       address: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
       postalCode: "94107",
-      phone: "(123) 456-7890",
+      areaCode: "123",
+      prefix: "456",
+      suffix: "7890",
       fleet: "737",
       seat: "FO",
       domicile: "GEG",
