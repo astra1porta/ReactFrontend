@@ -1,11 +1,14 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import PropTypes from "prop-types";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { PilotAvatarView } from "../PilotAvatarView/PilotAvatarView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { deletePilot } from "../../redux/features/pilotsSlice";
 
-export const PilotView = ({ avatar, pilot }) => {
+export const PilotView = ({ avatar, pilot, index }) => {
+  const dispatch = useDispatch();
   return (
     <Col>
       <div className="card">
@@ -18,6 +21,15 @@ export const PilotView = ({ avatar, pilot }) => {
               {pilot.seat} {pilot.fleet}
             </div>
             <div>{pilot.domicile}</div>
+            <div>
+              <Button
+                variant="outline-danger"
+                className="mb-3 mt-1"
+                onClick={() => dispatch(deletePilot(index))}
+              >
+                Delete Pilot
+              </Button>
+            </div>
           </Col>
           <Col className="col-md-8">
             <div className="card-body">

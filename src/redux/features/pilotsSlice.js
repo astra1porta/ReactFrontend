@@ -391,11 +391,15 @@ export const pilotsSlice = createSlice({
       reducer: (state, action) => {
         state.pilots.push(action.payload);
       },
+      
     },
+    deletePilot: (state, action) => {
+        state.pilots.splice(action.payload, 1)
+    }
   },
 });
 
 //export const addPilot = (state) => state.pilots;
-export const {addPilot} = pilotsSlice.actions;
+export const { addPilot, deletePilot } = pilotsSlice.actions;
 
 export default pilotsSlice.reducer;

@@ -7,6 +7,8 @@ import john from "../../assets/img/john-smith.jpeg";
 import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
+import { store } from "../../redux/store";
+import { Provider } from "react-redux";
 
 export default {
   title: "Components/PilotView",
@@ -119,6 +121,6 @@ const pilot = {
     domicile: "GEG",
   },
 };
-const Template = (args) => <PilotView {...args} />;
+const Template = (args) => (<Provider store={store}><PilotView {...args} /></Provider>);
 export const Default = Template.bind({});
 Default.args = { avatar: avatar.alex, pilot: pilot.alex };
