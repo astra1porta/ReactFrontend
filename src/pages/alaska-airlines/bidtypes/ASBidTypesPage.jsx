@@ -4,13 +4,18 @@ import HeaderView from "../../../components/HeaderView";
 import { BidTypeHeaderView } from "../../../components/BidTypeHeaderView/BidTypeHeaderView";
 import { Container, Row, Col } from "react-bootstrap";
 import { ButtonColView } from "../../../components/ButtonColView/ButtonColView";
+import { selectBidTypes } from "../../../redux/features/bidTypeSlice";
+import { useSelector } from "react-redux";
 
 export function ASBidTypesPage({ bidTypes, navBarDropDowns }) {
+  const storedBidTypes = useSelector(selectBidTypes);
+  if (storedBidTypes && storedBidTypes.length > 0) {
+    bidTypes = storedBidTypes.filter((bidType) => bidType.airline === "AS");
+  }
   return (
     <>
-      <header>
-        <HeaderView navBarDropDowns={navBarDropDowns} />
-      </header>
+      <HeaderView navBarDropDowns={navBarDropDowns} />
+
       <Container>
         <h1>Alaska Airlines Bid Types</h1>
 
@@ -24,7 +29,7 @@ export function ASBidTypesPage({ bidTypes, navBarDropDowns }) {
           bidTypes.map((bidType) => (
             <Row
               key={bidType.Id}
-              className={`d-flex align-items-center text-center py-2 ${
+              className={`table-responsive data flrow bg ${bidType.status} ${
                 bidType.Id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
@@ -34,11 +39,11 @@ export function ASBidTypesPage({ bidTypes, navBarDropDowns }) {
               <Col className="d-flex justify-self-start">
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
               </Col>
-              <Col>{bidType.status === 1 ? "CURRENT" : "IMPORTING"}</Col>
-              <Col>{bidType.bidPeriods}</Col>
+              <Col>{bidType.status}</Col>
+              <Col>{bidType.numOfBidPeriods}</Col>
               <Col>{bidType.imported}</Col>
               <Col>
-                <ButtonColView />
+                <ButtonColView status={bidType.status} />
               </Col>
             </Row>
           ))
@@ -62,7 +67,7 @@ ASBidTypesPage.propTypes = {
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,
       status: PropTypes.number.isRequired,
-      bidPeriods: PropTypes.number.isRequired,
+      numOfBidPeriods: PropTypes.number.isRequired,
       imported: PropTypes.string.isRequired,
     })
   ),

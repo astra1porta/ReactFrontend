@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudDownloadAlt, faTimes, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
-export const ButtonView = ({ backgroundColor, label, onClick }) => {
+export const ButtonView = ({ backgroundColor, label, buttonType, status }) => {
   return (
     <button
       type="button"
-      className={["btn", "btn-block", "btn-sm", backgroundColor, onClick].join(
-        " "
-      )}
+      className={`btn w-100 btn-sm ${backgroundColor} ${buttonType} ${status}`}
     >
       {label === "Retry Import" ? (
         <FontAwesomeIcon icon={faCloudDownloadAlt} />
@@ -30,7 +28,6 @@ export const ButtonView = ({ backgroundColor, label, onClick }) => {
 ButtonView.propTypes = {
   backgroundColor: PropTypes.string,
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
 };
 
 ButtonView.defaultProps = {

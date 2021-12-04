@@ -1,4 +1,6 @@
 import React from "react";
+import { store } from "../../redux/store";
+import { Provider } from "react-redux";
 
 import { HeaderView } from "./HeaderView";
 
@@ -7,7 +9,7 @@ export default {
   component: HeaderView,
 };
 
-const Template = (args) => <HeaderView {...args} />;
+const Template = (args) => (<Provider store={store}><HeaderView {...args} /></Provider>);
 
 //Test on load Behaviour
 export const Default = Template.bind({});

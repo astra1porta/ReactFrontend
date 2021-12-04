@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 
+
 render(
   <React.StrictMode>
     <Provider store={store}>

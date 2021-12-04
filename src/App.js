@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import alex from "./assets/img/alex-johnathan.jpeg";
 import janet from "./assets/img/janet-carton.jpeg";
 import john from "./assets/img/john-smith.jpeg";
@@ -16,7 +14,8 @@ import FABidTypesPage from "./pages/frontier-airlines/bidtypes";
 import FAPilotsPage from "./pages/frontier-airlines/pilots";
 import UPSBidTypesPage from "./pages/ups/bidtypes";
 import UPSPilotsPage from "./pages/ups/pilots";
-import { selectPilots } from "./redux/features/pilotsSlice";
+import NotFoundPage from "./pages/NotFoundPage";
+import AddPilot from "./pages/AddPilotPage";
 
 import "./App.css";
 
@@ -38,7 +37,7 @@ function App() {
         lastName: "Smith",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -56,7 +55,7 @@ function App() {
         lastName: "Johnathan",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -74,7 +73,7 @@ function App() {
         lastName: "Smith",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -92,7 +91,7 @@ function App() {
         lastName: "Zimber",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -110,7 +109,7 @@ function App() {
         lastName: "Smith",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -128,7 +127,7 @@ function App() {
         lastName: "Carton",
         trainingFacility: "Riviera State 32/106",
         company: "Twitter, Inc.",
-        address: "795 Folsom Ave",
+        address1: "795 Folsom Ave",
         address2: "Suite 600",
         city: "San Francisco",
         state: "CA",
@@ -149,7 +148,7 @@ function App() {
         seat: "CAPTAIN",
         domicile: "ANC",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
       {
@@ -158,7 +157,7 @@ function App() {
         seat: "CAPTAIN",
         domicile: "LAX",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
       {
@@ -167,7 +166,7 @@ function App() {
         seat: "CAPTAIN",
         domicile: "PDX",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
       {
@@ -176,7 +175,7 @@ function App() {
         seat: "CAPTAIN",
         domicile: "SEA",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
       {
@@ -185,7 +184,7 @@ function App() {
         seat: "FIRST OFFICER",
         domicile: "ANC",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
       {
@@ -194,7 +193,7 @@ function App() {
         seat: "FIRST OFFICER",
         domicile: "LAX",
         status: 1,
-        bidPeriods: 1,
+        numOfBidPeriods: 1,
         imported: "Nov 1 2017 12:00AM",
       },
     ],
@@ -222,8 +221,6 @@ function App() {
     ],
   };
 
-  
-
   return (
     <Router>
       <Routes>
@@ -237,78 +234,92 @@ function App() {
             />
           }
         />
-        <Route
-          path="american-airlines/bidTypes"
-          element={
-            <AABidTypesPage
-              navBarDropDowns={db.navBarDropDowns}
-              bidTypes={db.bidTypes}
-            />
-          }
-        />
-        <Route
-          path="alaska-airlines/bidTypes"
-          element={
-            <ASBidTypesPage
-              navBarDropDowns={db.navBarDropDowns}
-              bidTypes={db.bidTypes}
-            />
-          }
-        />
-        <Route
-          path="frontier-airlines/bidTypes"
-          element={
-            <FABidTypesPage
-              navBarDropDowns={db.navBarDropDowns}
-              bidTypes={db.bidTypes}
-            />
-          }
-        />
-        <Route
-          path="UPS/bidTypes"
-          element={
-            <UPSBidTypesPage
-              navBarDropDowns={db.navBarDropDowns}
-              bidTypes={db.bidTypes}
-            />
-          }
-        />
-        <Route
-          path="american-airlines/pilots"
-          element={
-            <AAPilotsPage
-              navBarDropDowns={db.navBarDropDowns}
-              pilots={db.pilots}
-            />
-          }
-        />
-        <Route
-          path="alaska-airlines/pilots"
-          element={
-            <ASPilotsPage
-              navBarDropDowns={db.navBarDropDowns}
-              pilots={db.pilots}
-            />
-          }
-        />
-        <Route
-          path="frontier-airlines/pilots"
-          element={
-            <FAPilotsPage
-              navBarDropDowns={db.navBarDropDowns}
-              pilots={db.pilots}
-            />
-          }
-        />
-        <Route
-          path="UPS/pilots"
-          element={
-            <UPSPilotsPage
-              navBarDropDowns={db.navBarDropDowns}
-              pilots={db.pilots}
-            />
-          }
-        />
+        <Route path="american-airlines">
+          <Route
+            path="bidTypes"
+            element={
+              <AABidTypesPage
+                navBarDropDowns={db.navBarDropDowns}
+                bidTypes={db.bidTypes}
+              />
+            }
+          />
+          <Route
+            path="pilots"
+            element={
+              <AAPilotsPage
+                navBarDropDowns={db.navBarDropDowns}
+                pilots={db.pilots}
+              />
+            }
+          />
+          <Route path="addPilot" element={<AddPilot airline="AA" />} />
+        </Route>
+        <Route path="alaska-airlines">
+          <Route
+            path="bidTypes"
+            element={
+              <ASBidTypesPage
+                navBarDropDowns={db.navBarDropDowns}
+                bidTypes={db.bidTypes}
+              />
+            }
+          />
+          <Route
+            path="pilots"
+            element={
+              <ASPilotsPage
+                navBarDropDowns={db.navBarDropDowns}
+                pilots={db.pilots}
+              />
+            }
+          />
+          <Route path="addPilot" element={<AddPilot airline="AS" />} />
+        </Route>
+        <Route path="frontier-airlines">
+          <Route
+            path="bidTypes"
+            element={
+              <FABidTypesPage
+                navBarDropDowns={db.navBarDropDowns}
+                bidTypes={db.bidTypes}
+              />
+            }
+          />
+          <Route
+            path="pilots"
+            element={
+              <FAPilotsPage
+                navBarDropDowns={db.navBarDropDowns}
+                pilots={db.pilots}
+              />
+            }
+          />
+          <Route path="addPilot" element={<AddPilot airline="FA" />} />
+        </Route>
+        <Route path="UPS">
+          <Route
+            path="bidTypes"
+            element={
+              <UPSBidTypesPage
+                navBarDropDowns={db.navBarDropDowns}
+                bidTypes={db.bidTypes}
+              />
+            }
+          />
+          <Route
+            path="pilots"
+            element={
+              <UPSPilotsPage
+                navBarDropDowns={db.navBarDropDowns}
+                pilots={db.pilots}
+              />
+            }
+          />
+          <Route path="addPilot" element={<AddPilot airline="UP" />} />
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

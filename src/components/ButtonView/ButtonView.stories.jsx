@@ -17,8 +17,8 @@ Primary.args = {
   label: "Retry Import",
 };
 
-export const BidPeriods = Template.bind({});
-BidPeriods.args = {
+export const bidPeriods = Template.bind({});
+bidPeriods.args = {
   ...Primary.args,
   backgroundColor: 'btn-info',
   label: "Bid Periods",
@@ -26,7 +26,7 @@ BidPeriods.args = {
 
 export const ImportHistory = Template.bind({});
 ImportHistory.args = {
-  ...BidPeriods.args,
+  ...bidPeriods.args,
   label: "Import History",
 };
 

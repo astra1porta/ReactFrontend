@@ -16,7 +16,8 @@ const avatar = {
   sandra: { src: sandra, alt: "Sandra" },
 };
 
-const initialState = [
+const initialState = {
+  pilots: [
   {
     id: 1,
     airline: "AA",
@@ -238,7 +239,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 12,
     airline: "FA",
     firstName: "Wade",
     lastName: "Wilson",
@@ -258,7 +259,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 13,
     airline: "FA",
     firstName: "James",
     lastName: "Howlett",
@@ -278,7 +279,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 14,
     airline: "FA",
     firstName: "Anna Marie",
     lastName: "LeBeau",
@@ -298,7 +299,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 15,
     airline: "FA",
     firstName: "Max",
     lastName: "Eisenhardt",
@@ -318,7 +319,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 16,
     airline: "UP",
     firstName: "Remy Etienne",
     lastName: "LaBeau",
@@ -338,7 +339,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 17,
     airline: "UP",
     firstName: "Katherine",
     lastName: "Pryde",
@@ -358,7 +359,7 @@ const initialState = [
     avatar: avatar.john,
   },
   {
-    id: 7,
+    id: 18,
     airline: "UP",
     firstName: "Illyana",
     lastName: "Rasputina",
@@ -377,7 +378,7 @@ const initialState = [
     suffix: "7890",
     avatar: avatar.john,
   },
-];
+]};
 export const loadPilots = createAsyncThunk("pilots/load", async () => {
   let res = await makeRequest(`/api/pilots/all`);
   return res.json();
@@ -385,14 +386,16 @@ export const loadPilots = createAsyncThunk("pilots/load", async () => {
 export const pilotsSlice = createSlice({
   name: "pilots",
   initialState,
-  extraReducers: {
-    [loadPilots.fulfilled]: (state, action) => {
-      state.pilots = action.payload;
+  reducers: {
+    addPilot: {
+      reducer: (state, action) => {
+        state.pilots.push(action.payload);
+      },
     },
   },
 });
 
-export const selectPilots = (state) => state.pilots;
-//export const {loadPilots} = createSlice.actions;
+//export const addPilot = (state) => state.pilots;
+export const {addPilot} = pilotsSlice.actions;
 
 export default pilotsSlice.reducer;

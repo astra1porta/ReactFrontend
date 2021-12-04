@@ -6,6 +6,8 @@ import michael from "../../../assets/img/michael-zimber.jpeg";
 import monica from "../../../assets/img/monica-smith.jpeg";
 import sandra from "../../../assets/img/sandra-smith.jpeg";
 import { ASPilotsPage } from "./ASPilotsPage";
+import { store } from "../../../redux/store";
+import { Provider } from "react-redux";
 
 export default {
   component: ASPilotsPage,
@@ -19,16 +21,17 @@ const avatar = {
   monica: { src: monica, alt: "Monica" },
   sandra: { src: sandra, alt: "Sandra" },
 };
-const Template = (args) => <ASPilotsPage {...args} />;
+const Template = (args) => (<Provider store={store}><ASPilotsPage {...args} /></Provider>);
 
 export const Default = Template.bind({});
 Default.args = {
   pilots: [
     {
-      firstName: "John Smith",
+      firstName: "John",
+      lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
@@ -42,10 +45,11 @@ Default.args = {
       avatar: avatar.john,
     },
     {
-      firstName: "Alex Johnathan",
+      firstName: "Alex",
+      lastName: "Johnathan",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
@@ -59,10 +63,11 @@ Default.args = {
       avatar: avatar.alex,
     },
     {
-      firstName: "Monica Smith",
+      firstName: "Monica",
+      lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
@@ -76,10 +81,11 @@ Default.args = {
       avatar: avatar.monica,
     },
     {
-      firstName: "Michael Zimber",
+      firstName: "Michael",
+      lastName: "Zimber",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
@@ -93,10 +99,11 @@ Default.args = {
       avatar: avatar.michael,
     },
     {
-      firstName: "Sandra Smith",
+      firstName: "Sandra",
+      lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",
@@ -110,10 +117,11 @@ Default.args = {
       avatar: avatar.sandra,
     },
     {
-      firstName: "Janet Carton",
+      firstName: "Janet",
+      lastName: "Carton",
       trainingFacility: "Riviera State 32/106",
       company: "Twitter, Inc.",
-      address: "795 Folsom Ave",
+      address1: "795 Folsom Ave",
       address2: "Suite 600",
       city: "San Francisco",
       state: "CA",

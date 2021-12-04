@@ -1,57 +1,179 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
+import { addPilot } from "../../redux/features/pilotsSlice";
+import { useNavigate } from "react-router-dom";
+import genericIcon from "../../assets/img/genericIcon.png";
 
-export const AddPilotFormView = () => {
+function company({ airline }) {
+  switch (airline) {
+    case "AA":
+      return "American Airlines";
+    case "AS":
+      return "Alaska Airlines";
+    case "FA":
+      return "Frontier Airlines";
+    default:
+      return "UPS";
+  }
+}
+const airlineLink = ({ airline }) => {
+  switch (airline) {
+    case "AA":
+      return "/american-airlines/pilots";
+    case "AS":
+      return "/alaska-airlines/pilots";
+    case "FA":
+      return "/frontier-airlines/pilots";
+    default:
+      return "/UPS/pilots";
+  }
+};
+
+export const AddPilotFormView = ({ airline }) => {
+  const pilots = useSelector((state) => state.pilots.pilots);
+  const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [fleet, setFleet] = useState();
+  const [seat, setSeat] = useState();
+  const [domicile, setDomicile] = useState();
+  const [trainingFacility, setTrainingFacility] = useState();
+  const [address1, setAddress1] = useState();
+  const [address2, setAddress2] = useState();
+  const [city, setCity] = useState();
+  const [pilotState, setPilotState] = useState();
+  const [postalCode, setPostalCode] = useState();
+  const [areaCode, setAreaCode] = useState();
+  const [prefix, setPrefix] = useState();
+  const [suffix, setSuffix] = useState();
+  const navigate = useNavigate();
+  const handleCancel = () => {
+    return navigate(airlineLink({airline}));
+  }
+  const handleAddPilot = (e) => {
+    e.preventDefault();
+    if (!firstName) return;
+    dispatch(
+      addPilot({
+        firstName: firstName,
+        lastName: lastName,
+        fleet: fleet,
+        seat: seat,
+        domicile: domicile,
+        trainingFacility: trainingFacility,
+        company: company({ airline }),
+        airline: airline,
+        address1: address1,
+        address2: address2,
+        city: city,
+        state: pilotState,
+        postalCode: postalCode,
+        areaCode: areaCode,
+        prefix: prefix,
+        suffix: suffix,
+        avatar: { src: genericIcon, alt: "Generic Avatar" },
+      }),
+      navigate(airlineLink({airline}))
+    );
+  };
+
   return (
     <Form>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="firstNameInput">
           <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Pilot First Name" />
+          <Form.Control
+            type="text"
+            placeholder="Enter Pilot First Name"
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          />
         </Form.Group>
 
         <Form.Group as={Col} controlId="lastNameInput">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Last Name" />
+          <Form.Control
+            type="text"
+            placeholder="Last Name"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
         </Form.Group>
       </Row>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="fleetInput">
           <Form.Label>Fleet</Form.Label>
-          <Form.Control type="text" placeholder="Enter Pilot Fleet" />
+          <Form.Control
+            type="text"
+            placeholder="Enter Pilot Fleet"
+            onChange={(e) => setFleet(e.target.value)}
+            value={fleet}
+          />
         </Form.Group>
 
         <Form.Group as={Col} controlId="seatInput">
           <Form.Label>Seat</Form.Label>
-          <Form.Control type="text" placeholder="Seat" />
+          <Form.Control
+            type="text"
+            placeholder="Seat"
+            onChange={(e) => setSeat(e.target.value)}
+            value={seat}
+          />
         </Form.Group>
         <Form.Group as={Col} controlId="domicileInput">
           <Form.Label>Domicile</Form.Label>
-          <Form.Control type="text" placeholder="Domicile" />
+          <Form.Control
+            type="text"
+            placeholder="Domicile"
+            onChange={(e) => setDomicile(e.target.value)}
+            value={domicile}
+          />
         </Form.Group>
         <Form.Group as={Col} controlId="trainingFacilityInput">
           <Form.Label>Training Facility</Form.Label>
-          <Form.Control type="text" placeholder="Pilot Training Facility" />
+          <Form.Control
+            type="text"
+            placeholder="Pilot Training Facility"
+            onChange={(e) => setTrainingFacility(e.target.value)}
+            value={trainingFacility}
+          />
         </Form.Group>
       </Row>
 
       <Form.Group className="mb-3" controlId="address1Input">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+        <Form.Control
+          placeholder="1234 Main St"
+          onChange={(e) => setAddress1(e.target.value)}
+          value={address1}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="address2Input">
         <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, suite, or floor" />
+        <Form.Control
+          placeholder="Apartment, studio, suite, or floor"
+          onChange={(e) => setAddress2(e.target.value)}
+          value={address2}
+        />
       </Form.Group>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="cityInput">
           <Form.Label>City</Form.Label>
-          <Form.Control />
+          <Form.Control
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
+          />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="stateInput">
+        <Form.Group
+          as={Col}
+          controlId="stateInput"
+          onChange={(e) => setPilotState(e.target.value)}
+          value={pilotState}
+        >
           <Form.Label>State</Form.Label>
           <Form.Select defaultValue="Choose...">
             <option>Choose...</option>
@@ -119,14 +241,19 @@ export const AddPilotFormView = () => {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group as={Col} controlId="postalCodeInput">
+        <Form.Group
+          as={Col}
+          controlId="postalCodeInput"
+          onChange={(e) => setPostalCode(e.target.value)}
+          value={postalCode}
+        >
           <Form.Label>Postal Code</Form.Label>
           <Form.Control />
         </Form.Group>
       </Row>
 
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="areaCodeInput">
+        <Form.Group as={Col} controlId="phoneInput">
           <InputGroup>
             <Form.Label className="d-flex align-self-center">Phone</Form.Label>
             &#40;
@@ -136,6 +263,8 @@ export const AddPilotFormView = () => {
               type="text"
               placeholder="xxx"
               maxLength="3"
+              onChange={(e) => setAreaCode(e.target.value)}
+              value={areaCode}
             />
             &#41;
             <Form.Control
@@ -144,6 +273,8 @@ export const AddPilotFormView = () => {
               type="text"
               placeholder="xxx"
               maxLength="3"
+              onChange={(e) => setPrefix(e.target.value)}
+              value={prefix}
             />
             <Form.Control
               className="small-thin-input"
@@ -151,14 +282,24 @@ export const AddPilotFormView = () => {
               type="text"
               placeholder="xxxx"
               maxLength="4"
+              onChange={(e) => setSuffix(e.target.value)}
+              value={suffix}
             />
           </InputGroup>
         </Form.Group>
       </Row>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <Row>
+        <Col className="d-flex justify-content-end">
+          <Button variant="primary" type="submit" onClick={handleAddPilot}>
+            Submit
+          </Button>
+        </Col>
+        <Col>
+          <Button variant="danger" type="cancel" onClick={handleCancel}>
+            Cancel
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };

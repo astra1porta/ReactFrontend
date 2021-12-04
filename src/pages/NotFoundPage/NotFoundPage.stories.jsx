@@ -1,19 +1,20 @@
 import React from "react";
-import { HomePage } from "./HomePage";
+import { NotFoundPage } from "./NotFoundPage";
 import { store } from "../../redux/store";
 import { Provider } from "react-redux";
 
 export default {
-  title: "Pages | Common/HomePage",
-  component: HomePage,
+  title: "Pages | Common/NotFoundPage",
+  component: NotFoundPage,
 };
-
-const Template = (args) => (<Provider store={store}><HomePage {...args} /></Provider>);
+const Template = (args) => (
+  <Provider store={store}>
+    <NotFoundPage {...args} />
+  </Provider>
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  name: "Bill Smith",
-  version: "1.0.0",
   navBarDropDowns: [
     {
       airlineName: "American Airlines",

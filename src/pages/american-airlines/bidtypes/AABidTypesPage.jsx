@@ -5,7 +5,14 @@ import { BidTypeHeaderView } from "../../../components/BidTypeHeaderView/BidType
 import { Container, Row, Col } from "react-bootstrap";
 import { ButtonColView } from "../../../components/ButtonColView/ButtonColView";
 
+import {selectBidTypes} from "../../../redux/features/bidTypeSlice";
+import { useSelector } from "react-redux";
+
 export function AABidTypesPage({ bidTypes, navBarDropDowns }) {
+  const storedBidTypes = useSelector(selectBidTypes);
+  if(storedBidTypes && storedBidTypes.length > 0){
+    bidTypes = storedBidTypes.filter((bidType) => bidType.airline === "AA");
+  }
   return (
     <>
       <header>
@@ -24,21 +31,21 @@ export function AABidTypesPage({ bidTypes, navBarDropDowns }) {
           bidTypes.map((bidType) => (
             <Row
               key={bidType.Id}
-              className={`d-flex align-items-center text-center py-2 ${
+              className={`table-responsive data flrow bg ${bidType.status} ${
                 bidType.Id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
-              <Col className="d-flex justify-self-start col-1">
+              <Col>
                 {bidType.Id}
               </Col>
-              <Col className="d-flex justify-self-start">
+              <Col>
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
               </Col>
-              <Col>{bidType.status === 1 ? "CURRENT" : "IMPORTING"}</Col>
-              <Col>{bidType.bidPeriods}</Col>
+              <Col>{bidType.status}</Col>
+              <Col>{bidType.numOfBidPeriods}</Col>
               <Col>{bidType.imported}</Col>
               <Col>
-                <ButtonColView />
+                <ButtonColView status={bidType.status} />
               </Col>
             </Row>
           ))
@@ -62,7 +69,7 @@ AABidTypesPage.propTypes = {
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,
       status: PropTypes.number.isRequired,
-      bidPeriods: PropTypes.number.isRequired,
+      numOfBidPeriods: PropTypes.number.isRequired,
       imported: PropTypes.string.isRequired,
     })
   ),

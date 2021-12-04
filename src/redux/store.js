@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import navMenuLinksReducer from "./features/navMenuLinksSlice";
-import aapilotsReducer from "./features/pilotsSlice";
+import pilotsReducer from "./features/pilotsSlice";
+import bidTypeReducer from "./features/bidTypeSlice";
 
 export const store = configureStore({
   reducer: {
     navBarDropDowns: navMenuLinksReducer,
-    pilots: aapilotsReducer,
+    pilots: pilotsReducer,
+    bidTypes: bidTypeReducer
   },
+
 });

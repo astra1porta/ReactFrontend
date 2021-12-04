@@ -31,7 +31,11 @@ bold {
 .card {
   overflow: hidden;
 }
+/* 404 page */
+.fourOhFour {
 
+  height: 85vh;
+}
 /* NavBarView */
 .navbar {
   padding: 0px !important;
@@ -54,6 +58,34 @@ bold {
   background-color: #e9ecef;
   border-radius: 0.3rem;
   width: 100%;
+}
+/* Tables */
+.table-responsive {
+  min-width: 800px;
+}
+.flex-table:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+/* bidTypes Flex or Grid Styling */
+.flrow {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.flrow .col {
+  width: calc(100% / 6);
+  text-align: center;
+  padding: 1px;
+}
+.bg.IMPORTING {
+  background-color: lightyellow !important;
+}
+.import-btn.IMPORTING,
+.delete-btn.IMPORTING {
+  display: none;
+}
+.cancel-btn.CURRENT {
+  display: none;
 }
 /* Form formatting */
 .small-thin-input {
