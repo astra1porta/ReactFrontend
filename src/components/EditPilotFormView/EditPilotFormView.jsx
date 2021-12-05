@@ -1,68 +1,48 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
-import { addPilot } from "../../redux/features/pilotsSlice";
+import { editPilot } from "../../redux/features/pilotsSlice";
 import { useNavigate } from "react-router-dom";
 import genericIcon from "../../assets/img/genericIcon.png";
 
-function company({ airline }) {
-  switch (airline) {
-    case "AA":
-      return "American Airlines";
-    case "AS":
-      return "Alaska Airlines";
-    case "FA":
-      return "Frontier Airlines";
-    default:
-      return "UPS";
-  }
-}
-const airlineLink = ({ airline }) => {
-  switch (airline) {
-    case "AA":
-      return "/american-airlines/pilots";
-    case "AS":
-      return "/alaska-airlines/pilots";
-    case "FA":
-      return "/frontier-airlines/pilots";
-    default:
-      return "/UPS/pilots";
-  }
-};
-
-export const AddPilotFormView = ({ airline }) => {
+export const EditPilotFormView = ({ id }) => {
+  const pilot = useSelector((state) => state.pilots).filter(
+    (pilot) => pilot.id === id
+  )[0];
+  console.log(pilot);
   const dispatch = useDispatch();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [fleet, setFleet] = useState();
-  const [seat, setSeat] = useState();
-  const [domicile, setDomicile] = useState();
-  const [trainingFacility, setTrainingFacility] = useState();
-  const [address1, setAddress1] = useState();
-  const [address2, setAddress2] = useState();
-  const [city, setCity] = useState();
-  const [pilotState, setPilotState] = useState();
-  const [postalCode, setPostalCode] = useState();
-  const [areaCode, setAreaCode] = useState();
-  const [prefix, setPrefix] = useState();
-  const [suffix, setSuffix] = useState();
+  const [firstName, setFirstName] = useState(pilot.firstName);
+  const [lastName, setLastName] = useState(pilot.lastName);
+  const [fleet, setFleet] = useState(pilot.fleet);
+  const [seat, setSeat] = useState(pilot.seat);
+  const [domicile, setDomicile] = useState(pilot.domicile);
+  const [trainingFacility, setTrainingFacility] = useState(
+    pilot.trainingFacility
+  );
+  const [address1, setAddress1] = useState(pilot.address1);
+  const [address2, setAddress2] = useState(pilot.address2);
+  const [city, setCity] = useState(pilot.city);
+  const [pilotState, setPilotState] = useState(pilot.state);
+  const [postalCode, setPostalCode] = useState(pilot.postalCode);
+  const [areaCode, setAreaCode] = useState(pilot.areaCode);
+  const [prefix, setPrefix] = useState(pilot.prefix);
+  const [suffix, setSuffix] = useState(pilot.suffix);
   const navigate = useNavigate();
   const handleCancel = () => {
-    return navigate(airlineLink({airline}));
-  }
+    return navigate(-1);
+  };
   const handleAddPilot = (e) => {
     e.preventDefault();
     if (!firstName) return;
     dispatch(
-      addPilot({
+     editPilot({
+        id: pilot.id,
         firstName: firstName,
         lastName: lastName,
         fleet: fleet,
         seat: seat,
         domicile: domicile,
         trainingFacility: trainingFacility,
-        company: company({ airline }),
-        airline: airline,
         address1: address1,
         address2: address2,
         city: city,
@@ -73,10 +53,9 @@ export const AddPilotFormView = ({ airline }) => {
         suffix: suffix,
         avatar: { src: genericIcon, alt: "Generic Avatar" },
       }),
-      navigate(airlineLink({airline}))
+      navigate(-1)
     );
   };
-
   return (
     <Form>
       <Row className="mb-3">
@@ -301,4 +280,4 @@ export const AddPilotFormView = ({ airline }) => {
   );
 };
 
-AddPilotFormView.propTypes = {};
+EditPilotFormView.propTypes = {};

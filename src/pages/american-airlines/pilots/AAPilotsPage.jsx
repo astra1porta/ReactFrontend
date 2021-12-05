@@ -27,9 +27,9 @@ export function AAPilotsPage({ pilots, navBarDropDowns }) {
           </Col>
         </Row>
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
-          {pilots.map((pilot, ctr) => (
-            <div key={ctr}>
-              <PilotView pilot={pilot} index={ctr} avatar={pilot.avatar} />
+          {pilots.map((pilot, index) => (
+            <div key={index}>
+              <PilotView pilot={pilot} index={pilot.id} avatar={pilot.avatar} />
             </div>
           ))}
         </Row>
@@ -42,7 +42,7 @@ export function AAPilotsPage({ pilots, navBarDropDowns }) {
 AAPilotsPage.propTypes = {
   pilots: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
       airline: PropTypes.string.isRequired,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,

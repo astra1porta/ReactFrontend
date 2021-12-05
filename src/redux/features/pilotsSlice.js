@@ -394,12 +394,17 @@ export const pilotsSlice = createSlice({
       
     },
     deletePilot: (state, action) => {
-        state.pilots.splice(action.payload, 1)
+      return{
+        pilots: [...state.pilots.filter(pilot => pilot.id !== action.payload)]
+      }
+    },
+    editPilot: (state, action) => {
+
     }
   },
 });
 
 //export const addPilot = (state) => state.pilots;
-export const { addPilot, deletePilot } = pilotsSlice.actions;
+export const { addPilot, deletePilot, editPilot } = pilotsSlice.actions;
 
 export default pilotsSlice.reducer;

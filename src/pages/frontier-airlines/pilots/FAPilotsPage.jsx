@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { HeaderView } from "../../../components/HeaderView/HeaderView";
 import { FooterView } from "../../../components/FooterView/FooterView";
@@ -7,8 +7,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
 
-export function FAPilotsPage({ pilots, navBarDropDowns }) {
-  pilots = useSelector((state) => state.pilots.pilots).filter(
+export function FAPilotsPage({ navBarDropDowns }) {
+  const pilots = useSelector((state) => state.pilots.pilots).filter(
     (pilot) => pilot.airline === "FA"
   );
   
@@ -28,9 +28,9 @@ export function FAPilotsPage({ pilots, navBarDropDowns }) {
           </Col>
         </Row>
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
-          {pilots.map((pilot, ctr) => (
-            <div key={ctr}>
-              <PilotView pilot={pilot} avatar={pilot.avatar} />
+          {pilots.map((pilot, index) => (
+            <div key={index}>
+              <PilotView pilot={pilot} index={pilot.id} avatar={pilot.avatar} />
             </div>
           ))}
         </Row>

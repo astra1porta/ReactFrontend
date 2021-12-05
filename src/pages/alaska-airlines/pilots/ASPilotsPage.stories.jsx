@@ -21,12 +21,17 @@ const avatar = {
   monica: { src: monica, alt: "Monica" },
   sandra: { src: sandra, alt: "Sandra" },
 };
-const Template = (args) => (<Provider store={store}><ASPilotsPage {...args} /></Provider>);
+const Template = (args) => (
+  <Provider store={store}>
+    <ASPilotsPage {...args} />
+  </Provider>
+);
 
 export const Default = Template.bind({});
 Default.args = {
   pilots: [
     {
+      id: 1,
       firstName: "John",
       lastName: "Smith",
       trainingFacility: "Riviera State 32/106",

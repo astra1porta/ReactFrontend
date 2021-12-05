@@ -5,12 +5,12 @@ import { BidTypeHeaderView } from "../../../components/BidTypeHeaderView/BidType
 import { Container, Row, Col } from "react-bootstrap";
 import { ButtonColView } from "../../../components/ButtonColView/ButtonColView";
 
-import {selectBidTypes} from "../../../redux/features/bidTypeSlice";
+import { selectBidTypes } from "../../../redux/features/bidTypeSlice";
 import { useSelector } from "react-redux";
 
 export function AABidTypesPage({ bidTypes, navBarDropDowns }) {
   const storedBidTypes = useSelector(selectBidTypes);
-  if(storedBidTypes && storedBidTypes.length > 0){
+  if (storedBidTypes && storedBidTypes.length > 0) {
     bidTypes = storedBidTypes.filter((bidType) => bidType.airline === "AA");
   }
   return (
@@ -30,14 +30,12 @@ export function AABidTypesPage({ bidTypes, navBarDropDowns }) {
         ) : (
           bidTypes.map((bidType) => (
             <Row
-              key={bidType.Id}
+              key={bidType.id}
               className={`table-responsive data flrow bg ${bidType.status} ${
-                bidType.Id % 2 !== 0 ? "bg-gray" : ""
+                bidType.id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
-              <Col>
-                {bidType.Id}
-              </Col>
+              <Col>{bidType.id}</Col>
               <Col>
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
               </Col>
@@ -64,7 +62,7 @@ AABidTypesPage.propTypes = {
   ),
   bidTypes: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       fleet: PropTypes.string.isRequired,
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,

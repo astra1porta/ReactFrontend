@@ -7,13 +7,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
 
-
-
 export function ASPilotsPage({ pilots, navBarDropDowns }) {
   pilots = useSelector((state) => state.pilots.pilots).filter(
     (pilot) => pilot.airline === "AS"
   );
-  
+
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -30,9 +28,9 @@ export function ASPilotsPage({ pilots, navBarDropDowns }) {
           </Col>
         </Row>
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
-          {pilots.map((pilot, ctr) => (
-            <div key={ctr}>
-              <PilotView pilot={pilot} avatar={pilot.avatar} />
+          {pilots.map((pilot, index) => (
+            <div key={index}>
+              <PilotView pilot={pilot} index={pilot.id} avatar={pilot.avatar} />
             </div>
           ))}
         </Row>
@@ -45,7 +43,7 @@ export function ASPilotsPage({ pilots, navBarDropDowns }) {
 ASPilotsPage.propTypes = {
   pilots: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
       airline: PropTypes.string.isRequired,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
@@ -61,7 +59,7 @@ ASPilotsPage.propTypes = {
       postalCode: PropTypes.string.isRequired,
       areaCode: PropTypes.string.isRequired,
       prefix: PropTypes.string.isRequired,
-      suffix: PropTypes.string.isRequired,      
+      suffix: PropTypes.string.isRequired,
       avatar: PropTypes.object.isRequired,
     })
   ),

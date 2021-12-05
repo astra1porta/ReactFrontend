@@ -8,15 +8,14 @@ import { selectBidTypes } from "../../../redux/features/bidTypeSlice";
 import { useSelector } from "react-redux";
 
 export function FABidTypesPage({ bidTypes, navBarDropDowns }) {
-    const storedBidTypes = useSelector(selectBidTypes);
-    if (storedBidTypes && storedBidTypes.length > 0) {
-      bidTypes = storedBidTypes.filter((bidType) => bidType.airline === "FA");
-    }
+  const storedBidTypes = useSelector(selectBidTypes);
+  if (storedBidTypes && storedBidTypes.length > 0) {
+    bidTypes = storedBidTypes.filter((bidType) => bidType.airline === "FA");
+  }
   return (
     <>
-      
-        <HeaderView navBarDropDowns={navBarDropDowns} />
-    
+      <HeaderView navBarDropDowns={navBarDropDowns} />
+
       <Container>
         <h1>Frontier Airlines Bid Types</h1>
 
@@ -29,14 +28,12 @@ export function FABidTypesPage({ bidTypes, navBarDropDowns }) {
         ) : (
           bidTypes.map((bidType) => (
             <Row
-              key={bidType.Id}
+              key={bidType.id}
               className={`table-responsive data flrow bg ${bidType.status} ${
-                bidType.Id % 2 !== 0 ? "bg-gray" : ""
+                bidType.id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
-              <Col>
-                {bidType.Id}
-              </Col>
+              <Col>{bidType.id}</Col>
               <Col>
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
               </Col>
@@ -63,7 +60,7 @@ FABidTypesPage.propTypes = {
   ),
   bidTypes: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       fleet: PropTypes.string.isRequired,
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,

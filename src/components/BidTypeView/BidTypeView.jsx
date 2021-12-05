@@ -3,11 +3,11 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 export function BidTypeView({
-  bidType: { status, Id, seat, domicile, fleet, numOfBidPeriods, imported },
+  bidType: { status, id, seat, domicile, fleet, numOfBidPeriods, imported },
 }) {
   return (
     <Row fluid className={`table-responsive data flrow bg ${status}`}>
-      <Col>{Id}</Col>
+      <Col>{id}</Col>
       <Col>
         {seat}
         {domicile}

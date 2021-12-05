@@ -1,9 +1,9 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   bidTypes: [
     {
-      Id: "1",
+      id: "1",
       airline: "AA",
       fleet: "73G",
       seat: "CAPTAIN",
@@ -13,7 +13,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "2",
+      id: "2",
       airline: "AA",
       fleet: "73G",
       seat: "CAPTAIN",
@@ -23,7 +23,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "3",
+      id: "3",
       fleet: "73G",
       airline: "AA",
       seat: "CAPTAIN",
@@ -33,7 +33,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "4",
+      id: "4",
       fleet: "73G",
       airline: "AA",
       seat: "CAPTAIN",
@@ -43,7 +43,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "5",
+      id: "5",
       fleet: "73G",
       airline: "AA",
       seat: "FIRST OFFICER",
@@ -53,7 +53,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "6",
+      id: "6",
       airline: "AA",
       fleet: "73G",
       seat: "FIRST OFFICER",
@@ -63,7 +63,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "7",
+      id: "7",
       airline: "AS",
       fleet: "73G",
       seat: "CAPTAIN",
@@ -73,7 +73,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "8",
+      id: "8",
       fleet: "73G",
       airline: "AS",
       seat: "CAPTAIN",
@@ -83,7 +83,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "9",
+      id: "9",
       fleet: "73G",
       airline: "AS",
       seat: "CAPTAIN",
@@ -93,7 +93,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "10",
+      id: "10",
       fleet: "73G",
       airline: "AS",
       seat: "FIRST OFFICER",
@@ -103,7 +103,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "11",
+      id: "11",
       airline: "AS",
       fleet: "73G",
       seat: "FIRST OFFICER",
@@ -113,7 +113,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "12",
+      id: "12",
       airline: "FA",
       fleet: "73G",
       seat: "CAPTAIN",
@@ -123,7 +123,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "13",
+      id: "13",
       fleet: "73G",
       airline: "FA",
       seat: "CAPTAIN",
@@ -133,7 +133,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "14",
+      id: "14",
       fleet: "73G",
       airline: "FA",
       seat: "CAPTAIN",
@@ -143,7 +143,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "15",
+      id: "15",
       fleet: "73G",
       airline: "FA",
       seat: "FIRST OFFICER",
@@ -153,7 +153,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "16",
+      id: "16",
       airline: "UP",
       fleet: "73G",
       seat: "FIRST OFFICER",
@@ -163,7 +163,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "17",
+      id: "17",
       airline: "UP",
       fleet: "73G",
       seat: "FIRST OFFICER",
@@ -173,7 +173,7 @@ const initialState = {
       imported: new Date().toDateString(),
     },
     {
-      Id: "18",
+      id: "18",
       airline: "UP",
       fleet: "73G",
       seat: "FIRST OFFICER",
@@ -188,11 +188,9 @@ const initialState = {
 export const bidTypeSlice = createSlice({
   name: "bidTypes",
   initialState,
-  reducers: {
-      
-  }
+  reducers: {},
 });
 
-export const selectBidTypes = (state) => state.bidTypes.bidTypes;  //state.store.objectInStore
+export const selectBidTypes = (state) => state.bidTypes.bidTypes; //state.store.objectInStore
 
 export default bidTypeSlice.reducer;

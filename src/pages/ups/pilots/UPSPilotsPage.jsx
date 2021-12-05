@@ -27,9 +27,9 @@ export function UPSPilotsPage({ pilots, navBarDropDowns }) {
           </Col>
         </Row>
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
-          {pilots.map((pilot, ctr) => (
-            <div key={ctr}>
-              <PilotView pilot={pilot} avatar={pilot.avatar} />
+          {pilots.map((pilot, index) => (
+            <div key={index}>
+              <PilotView index={pilot.id} pilot={pilot} avatar={pilot.avatar} />
             </div>
           ))}
         </Row>

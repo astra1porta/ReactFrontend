@@ -143,7 +143,7 @@ function App() {
     ],
     bidTypes: [
       {
-        Id: "1",
+        id: "1",
         fleet: "73G",
         seat: "CAPTAIN",
         domicile: "ANC",
@@ -152,7 +152,7 @@ function App() {
         imported: "Nov 1 2017 12:00AM",
       },
       {
-        Id: "2",
+        id: "2",
         fleet: "73G",
         seat: "CAPTAIN",
         domicile: "LAX",
@@ -161,7 +161,7 @@ function App() {
         imported: "Nov 1 2017 12:00AM",
       },
       {
-        Id: "3",
+        id: "3",
         fleet: "73G",
         seat: "CAPTAIN",
         domicile: "PDX",
@@ -170,7 +170,7 @@ function App() {
         imported: "Nov 1 2017 12:00AM",
       },
       {
-        Id: "4",
+        id: "4",
         fleet: "73G",
         seat: "CAPTAIN",
         domicile: "SEA",
@@ -179,7 +179,7 @@ function App() {
         imported: "Nov 1 2017 12:00AM",
       },
       {
-        Id: "5",
+        id: "5",
         fleet: "73G",
         seat: "FIRST OFFICER",
         domicile: "ANC",
@@ -188,7 +188,7 @@ function App() {
         imported: "Nov 1 2017 12:00AM",
       },
       {
-        Id: "6",
+        id: "6",
         fleet: "73G",
         seat: "FIRST OFFICER",
         domicile: "LAX",

@@ -14,7 +14,7 @@ const store = {
     return {
       bidTypes: [
         {
-          Id: "1",
+          id: "1",
           fleet: "73G",
           seat: "CAPTAIN",
           domicile: "ANC",
@@ -23,7 +23,7 @@ const store = {
           imported: "Nov 1 2017 12:00AM",
         },
         {
-          Id: "2",
+          id: "2",
           fleet: "73G",
           seat: "CAPTAIN",
           domicile: "LAX",
@@ -32,7 +32,7 @@ const store = {
           imported: "Nov 1 2017 12:00AM",
         },
         {
-          Id: "3",
+          id: "3",
           fleet: "73G",
           seat: "CAPTAIN",
           domicile: "PDX",
@@ -41,7 +41,7 @@ const store = {
           imported: "Nov 1 2017 12:00AM",
         },
         {
-          Id: "4",
+          id: "4",
           fleet: "73G",
           seat: "CAPTAIN",
           domicile: "SEA",
@@ -50,7 +50,7 @@ const store = {
           imported: "Nov 1 2017 12:00AM",
         },
         {
-          Id: "5",
+          id: "5",
           fleet: "73G",
           seat: "FIRST OFFICER",
           domicile: "ANC",
@@ -59,7 +59,7 @@ const store = {
           imported: "Nov 1 2017 12:00AM",
         },
         {
-          Id: "6",
+          id: "6",
           fleet: "73G",
           seat: "FIRST OFFICER",
           domicile: "LAX",
@@ -74,7 +74,11 @@ const store = {
   dispatch: action("dispatch"),
 };
 
-const Template = (args) => <Provider store={store}><ASBidTypesPage {...args} /></Provider>;
+const Template = (args) => (
+  <Provider store={store}>
+    <ASBidTypesPage {...args} />
+  </Provider>
+);
 
 export const Default = Template.bind({});
 Default.args = {

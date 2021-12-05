@@ -29,12 +29,12 @@ export function UPSBidTypesPage({ navBarDropDowns }) {
         ) : (
           bidTypes.map((bidType) => (
             <Row
-              key={bidType.Id}
+              key={bidType.id}
               className={`table-responsive data flrow bg ${bidType.status} ${
-                bidType.Id % 2 !== 0 ? "bg-gray" : ""
+                bidType.id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
-              <Col>{bidType.Id}</Col>
+              <Col>{bidType.id}</Col>
               <Col>
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
               </Col>
@@ -61,7 +61,7 @@ UPSBidTypesPage.propTypes = {
   ),
   bidTypes: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       fleet: PropTypes.string.isRequired,
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,

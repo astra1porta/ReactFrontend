@@ -28,13 +28,13 @@ export function ASBidTypesPage({ bidTypes, navBarDropDowns }) {
         ) : (
           bidTypes.map((bidType) => (
             <Row
-              key={bidType.Id}
+              key={bidType.id}
               className={`table-responsive data flrow bg ${bidType.status} ${
-                bidType.Id % 2 !== 0 ? "bg-gray" : ""
+                bidType.id % 2 !== 0 ? "bg-gray" : ""
               }`}
             >
               <Col className="d-flex justify-self-start col-1">
-                {bidType.Id}
+                {bidType.id}
               </Col>
               <Col className="d-flex justify-self-start">
                 {bidType.fleet} {bidType.seat} {bidType.domicile}
@@ -62,7 +62,7 @@ ASBidTypesPage.propTypes = {
   ),
   bidTypes: PropTypes.arrayOf(
     PropTypes.shape({
-      Id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       fleet: PropTypes.string.isRequired,
       seat: PropTypes.string.isRequired,
       domicile: PropTypes.string.isRequired,
