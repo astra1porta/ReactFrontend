@@ -16,6 +16,7 @@ import UPSBidTypesPage from "./pages/ups/bidtypes";
 import UPSPilotsPage from "./pages/ups/pilots";
 import NotFoundPage from "./pages/NotFoundPage";
 import AddPilot from "./pages/AddPilotPage";
+import EditPilot from "./pages/EditPilotPage";
 
 import "./App.css";
 
@@ -234,6 +235,7 @@ function App() {
             />
           }
         />
+        <Route path="editPilot/:pilotId" element={<EditPilot />} />
         <Route path="american-airlines">
           <Route
             path="bidTypes"

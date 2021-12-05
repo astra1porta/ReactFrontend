@@ -6,11 +6,12 @@ import { FooterView } from "../../../components/FooterView/FooterView";
 import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
+import { selectPilots } from "../../../redux/features/pilotsSlice";
 
 export function UPSPilotsPage({ pilots, navBarDropDowns }) {
-  pilots = useSelector((state) => state.pilots.pilots).filter(
-    (pilot) => pilot.airline === "UP"
-  );
+  const storedPilots = useSelector(selectPilots);
+  if (storedPilots && storedPilots.length > 0)
+    pilots = storedPilots.filter((pilot) => pilot.airline === "UP");
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />

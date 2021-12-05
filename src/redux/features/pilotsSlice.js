@@ -399,12 +399,13 @@ export const pilotsSlice = createSlice({
       }
     },
     editPilot: (state, action) => {
-
-    }
+      state.pilots = state.pilots.map(el => el.id === action.payload.id ? action.payload :el)
+    },
+    // end of reducers
   },
 });
 
-//export const addPilot = (state) => state.pilots;
+export const selectPilots = (state) => state.pilots.pilots;
 export const { addPilot, deletePilot, editPilot } = pilotsSlice.actions;
 
 export default pilotsSlice.reducer;

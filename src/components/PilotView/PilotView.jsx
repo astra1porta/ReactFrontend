@@ -1,16 +1,21 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { Row, Col, Button } from "react-bootstrap";
 import { PilotAvatarView } from "../PilotAvatarView/PilotAvatarView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { deletePilot } from "../../redux/features/pilotsSlice";
+import { deletePilot} from "../../redux/features/pilotsSlice";
+
+
 
 export const PilotView = ({ avatar, pilot, index }) => {
   const dispatch = useDispatch();
   return (
+
     <Col>
+    
       <div className="card">
         <Row className="g-0 mt-3">
           <Col className="col-md-4 d-flex flex-column align-items-center">
@@ -21,15 +26,28 @@ export const PilotView = ({ avatar, pilot, index }) => {
               {pilot.seat} {pilot.fleet}
             </div>
             <div>{pilot.domicile}</div>
-            <div>
+            <Row className="flex-inline flex-column no-wrap ">
+              <div>
               <Button
                 variant="outline-danger"
-                className="mb-3 mt-1"
+                className="mb-3 mt-1 me-1"
                 onClick={() => dispatch(deletePilot(index))}
               >
-                Delete Pilot
+                Delete
               </Button>
-            </div>
+         
+              <Button
+                as={Link}
+                variant="outline-success"
+                className="mb-3 mt-1"
+                to={`/editPilot/${pilot.id}`}
+              
+              >
+                Edit
+              </Button>
+        
+              </div>
+            </Row>
           </Col>
           <Col className="col-md-8">
             <div className="card-body">

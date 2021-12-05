@@ -5,10 +5,13 @@ import { HeaderView } from "../../../components/HeaderView/HeaderView";
 import { FooterView } from "../../../components/FooterView/FooterView";
 import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
+import { selectPilots } from "../../../redux/features/pilotsSlice";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
 
 export function AAPilotsPage({ pilots, navBarDropDowns }) {
-  pilots = useSelector((state) => state.pilots.pilots).filter(
+  const storedPilots = useSelector(selectPilots);
+  if(storedPilots && storedPilots.length > 0)
+  pilots = storedPilots.filter(
     (pilot) => pilot.airline === "AA"
   );
   return (

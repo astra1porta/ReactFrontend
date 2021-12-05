@@ -4,11 +4,13 @@ import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import { editPilot } from "../../redux/features/pilotsSlice";
 import { useNavigate } from "react-router-dom";
 import genericIcon from "../../assets/img/genericIcon.png";
+import { selectPilots } from "../../redux/features/pilotsSlice";
 
-export const EditPilotFormView = ({ id }) => {
-  const pilot = useSelector((state) => state.pilots).filter(
-    (pilot) => pilot.id === id
-  )[0];
+export const EditPilotFormView = ({pilotId}) => {
+  
+  const navigate = useNavigate();
+  const pilot = useSelector(selectPilots)
+  .filter((pilot) => pilot.id === parseInt(pilotId))[0];
   console.log(pilot);
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(pilot.firstName);
@@ -27,16 +29,17 @@ export const EditPilotFormView = ({ id }) => {
   const [areaCode, setAreaCode] = useState(pilot.areaCode);
   const [prefix, setPrefix] = useState(pilot.prefix);
   const [suffix, setSuffix] = useState(pilot.suffix);
-  const navigate = useNavigate();
   const handleCancel = () => {
     return navigate(-1);
   };
-  const handleAddPilot = (e) => {
+  const handleEditPilot = (e) => {
     e.preventDefault();
     if (!firstName) return;
     dispatch(
      editPilot({
         id: pilot.id,
+        airline: pilot.airline,
+        company: pilot.company,
         firstName: firstName,
         lastName: lastName,
         fleet: fleet,
@@ -51,7 +54,7 @@ export const EditPilotFormView = ({ id }) => {
         areaCode: areaCode,
         prefix: prefix,
         suffix: suffix,
-        avatar: { src: genericIcon, alt: "Generic Avatar" },
+        avatar: pilot.avatar,
       }),
       navigate(-1)
     );
@@ -151,7 +154,7 @@ export const EditPilotFormView = ({ id }) => {
           controlId="stateInput"
         >
           <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose..." onChange={(e) => setPilotState(e.target.value)}
+          <Form.Select onChange={(e) => setPilotState(e.target.value)}
           value={pilotState}>
             <option>Choose...</option>
             <optgroup label="State">
@@ -266,7 +269,7 @@ export const EditPilotFormView = ({ id }) => {
       </Row>
       <Row>
         <Col className="d-flex justify-content-end">
-          <Button variant="primary" type="submit" onClick={handleAddPilot}>
+          <Button variant="primary" type="submit" onClick={handleEditPilot}>
             Save
           </Button>
         </Col>
