@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import { editPilot } from "../../redux/features/pilotsSlice";
 import { useNavigate } from "react-router-dom";
-import genericIcon from "../../assets/img/genericIcon.png";
 import { selectPilots } from "../../redux/features/pilotsSlice";
 
 export const EditPilotFormView = ({pilotId}) => {
@@ -11,7 +10,6 @@ export const EditPilotFormView = ({pilotId}) => {
   const navigate = useNavigate();
   const pilot = useSelector(selectPilots)
   .filter((pilot) => pilot.id === parseInt(pilotId))[0];
-  console.log(pilot);
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(pilot.firstName);
   const [lastName, setLastName] = useState(pilot.lastName);

@@ -151,8 +151,4 @@ const Template = (args) => (
     <EditPilotFormView {...args} />
   </Provider>
 );
-
 export const Default = Template.bind({});
-Default.args = {
-  id: 1
-};
