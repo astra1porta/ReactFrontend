@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import alex from "../../assets/img/alex-johnathan.jpeg";
 import janet from "../../assets/img/janet-carton.jpeg";
 import john from "../../assets/img/john-smith.jpeg";
@@ -17,7 +18,9 @@ const avatar = {
 };
 
 const initialState = {
+  loading: 'idle',
   pilots: [],
+  
 };
 export const loadPilots = createAsyncThunk("pilots/load", async () => {
   let res = await makeRequest(`/api/pilot/all`);
@@ -27,6 +30,7 @@ export const updatePilot = createAsyncThunk(
   "pilot/update",
   async ({
     crewId,
+    airline,
     firstName,
     lastName,
     fleet,
@@ -46,7 +50,8 @@ export const updatePilot = createAsyncThunk(
     await makeRequest(`/api/pilot/update`, {
       method: "put",
       body: JSON.stringify({
-        crewId,
+        crewId: crewId,
+        airline: airline,
         firstName: firstName,
         lastName: lastName,
         fleet: fleet,
@@ -64,11 +69,24 @@ export const updatePilot = createAsyncThunk(
         suffix: suffix,
       }),
     });
-
     return {
-      id: crewId,
+      crewId: crewId,
+      airline: airline,
       firstName: firstName,
       lastName: lastName,
+      fleet: fleet,
+      seat: seat,
+      domicile: domicile,
+      trainingFacility: trainingFacility,
+      company: company,
+      address1: address1,
+      address2: address2,
+      city: city,
+      state: state,
+      postalCode: postalCode,
+      areaCode: areaCode,
+      prefix: prefix,
+      suffix: suffix,
     };
   }
 ); /*
@@ -101,12 +119,20 @@ export const pilotsSlice = createSlice({
   },
   // end of reducers
   extraReducers: {
+    [loadPilots.pending]: (state, action) => {
+      state.loading = 'loading';
+    },
     [loadPilots.fulfilled]: (state, action) => {
       state.pilots = action.payload;
+      state.loading = 'idle';
     },
+    [loadPilots.rejected]: (state, action) => {
+      state.loading = 'rejected';
+    },
+
     [updatePilot.fulfilled]: (state, action) => {
       const index = state.pilots.findIndex(
-        (t) => t.crewId === action.payload.id
+        (pilot) => pilot.crewId === action.payload.crewId
       );
       state.pilots[index] = {
         ...state.pilots[index],

@@ -1,17 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { HeaderView } from "../../../components/HeaderView/HeaderView";
 import { FooterView } from "../../../components/FooterView/FooterView";
 import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
-import { selectPilots } from "../../../redux/features/pilotsSlice";
+import {
+  selectPilots,
+  updatePilot,
+  addPilot,
+} from "../../../redux/features/pilotsSlice";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
 
 export function AAPilotsPage({ pilots, navBarDropDowns }) {
   const storedPilots = useSelector(selectPilots);
   if (storedPilots && storedPilots.length > 0)
     pilots = storedPilots.filter((pilot) => pilot.airline === "AA");
+  const dispatch = useDispatch();
+  const events = {
+    editPilot: (pilot) => dispatch(updatePilot(pilot)),
+    addPilot: (pilot) => dispatch(addPilot(pilot)),
+  };
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -34,6 +43,7 @@ export function AAPilotsPage({ pilots, navBarDropDowns }) {
                 pilot={pilot}
                 index={pilot.crewId}
                 avatar={pilot.avatar}
+                {...events}
               />
             </div>
           ))}

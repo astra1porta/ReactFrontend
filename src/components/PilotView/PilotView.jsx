@@ -9,7 +9,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { deletePilot } from "../../redux/features/pilotsSlice";
 import genericIcon from "../../assets/img/genericIcon.png";
 
-export const PilotView = ({ avatar, pilot, index }) => {
+export const PilotView = ({ avatar, pilot, index}) => {
   const dispatch = useDispatch();
   if (!avatar) {
     avatar = { src: genericIcon, alt: pilot.firstName };

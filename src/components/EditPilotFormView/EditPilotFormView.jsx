@@ -35,7 +35,7 @@ export const EditPilotFormView = ({ pilotId }) => {
     if (!firstName) return;
     dispatch(
       updatePilot({
-        id: pilot.crewId,
+        crewId: pilot.crewId,
         airline: pilot.airline,
         company: pilot.company,
         firstName: firstName,
