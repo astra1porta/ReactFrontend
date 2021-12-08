@@ -1,17 +1,27 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { HeaderView } from "../../../components/HeaderView/HeaderView";
 import { FooterView } from "../../../components/FooterView/FooterView";
 import { Container, Row, Col } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
-import { selectPilots } from "../../../redux/features/pilotsSlice";
+import {
+  selectPilots,
+  updatePilot,
+  addPilot,
+} from "../../../redux/features/pilotsSlice";
 
 export function UPSPilotsPage({ pilots, navBarDropDowns }) {
   const storedPilots = useSelector(selectPilots);
-  if (storedPilots && storedPilots.length > 0)
+  if (storedPilots && storedPilots.length > 0) {
     pilots = storedPilots.filter((pilot) => pilot.airline === "UP");
+  }
+  const dispatch = useDispatch();
+  const events = {
+    editPilot: (pilot) => dispatch(updatePilot(pilot)),
+    addPilot: (pilot) => dispatch(addPilot(pilot)),
+  };
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -30,7 +40,12 @@ export function UPSPilotsPage({ pilots, navBarDropDowns }) {
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
           {pilots.map((pilot, index) => (
             <div key={index}>
-              <PilotView index={pilot.id} pilot={pilot} avatar={pilot.avatar} />
+              <PilotView
+                index={pilot.crewId}
+                pilot={pilot}
+                avatar={pilot.avatar}
+                {...events}
+              />
             </div>
           ))}
         </Row>

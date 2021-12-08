@@ -10,10 +10,8 @@ import AddPilotButtonView from "../../../components/AddPilotButtonView";
 
 export function AAPilotsPage({ pilots, navBarDropDowns }) {
   const storedPilots = useSelector(selectPilots);
-  if(storedPilots && storedPilots.length > 0)
-  pilots = storedPilots.filter(
-    (pilot) => pilot.airline === "AA"
-  );
+  if (storedPilots && storedPilots.length > 0)
+    pilots = storedPilots.filter((pilot) => pilot.airline === "AA");
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -32,7 +30,11 @@ export function AAPilotsPage({ pilots, navBarDropDowns }) {
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
           {pilots.map((pilot, index) => (
             <div key={index}>
-              <PilotView pilot={pilot} index={pilot.id} avatar={pilot.avatar} />
+              <PilotView
+                pilot={pilot}
+                index={pilot.crewId}
+                avatar={pilot.avatar}
+              />
             </div>
           ))}
         </Row>

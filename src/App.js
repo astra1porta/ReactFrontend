@@ -1,4 +1,7 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { loadPilots } from "./redux/features/pilotsSlice";
 import alex from "./assets/img/alex-johnathan.jpeg";
 import janet from "./assets/img/janet-carton.jpeg";
 import john from "./assets/img/john-smith.jpeg";
@@ -21,6 +24,11 @@ import EditPilot from "./pages/EditPilotPage";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadPilots());
+  }, [dispatch]);
   const avatar = {
     alex: { src: alex, alt: "Alex" },
     janet: { src: janet, alt: "Janet" },

@@ -12,7 +12,7 @@ export function FAPilotsPage({ pilots, navBarDropDowns }) {
   const storedPilots = useSelector(selectPilots);
   if (storedPilots && storedPilots.length > 0)
     pilots = storedPilots.filter((pilot) => pilot.airline === "FA");
-  
+
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -31,7 +31,11 @@ export function FAPilotsPage({ pilots, navBarDropDowns }) {
         <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
           {pilots.map((pilot, index) => (
             <div key={index}>
-              <PilotView pilot={pilot} index={pilot.id} avatar={pilot.avatar} />
+              <PilotView
+                pilot={pilot}
+                index={pilot.crewId}
+                avatar={pilot.avatar}
+              />
             </div>
           ))}
         </Row>

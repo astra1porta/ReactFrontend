@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
-import { editPilot } from "../../redux/features/pilotsSlice";
+import { updatePilot } from "../../redux/features/pilotsSlice";
 import { useNavigate } from "react-router-dom";
 import { selectPilots } from "../../redux/features/pilotsSlice";
 
-export const EditPilotFormView = ({pilotId}) => {
-  
+export const EditPilotFormView = ({ pilotId }) => {
   const navigate = useNavigate();
-  const pilot = useSelector(selectPilots)
-  .filter((pilot) => pilot.id === parseInt(pilotId))[0];
+  const pilot = useSelector(selectPilots).filter(
+    (pilot) => pilot.crewId === parseInt(pilotId)
+  )[0];
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(pilot.firstName);
   const [lastName, setLastName] = useState(pilot.lastName);
@@ -34,8 +34,8 @@ export const EditPilotFormView = ({pilotId}) => {
     e.preventDefault();
     if (!firstName) return;
     dispatch(
-     editPilot({
-        id: pilot.id,
+      updatePilot({
+        id: pilot.crewId,
         airline: pilot.airline,
         company: pilot.company,
         firstName: firstName,
@@ -147,13 +147,12 @@ export const EditPilotFormView = ({pilotId}) => {
           />
         </Form.Group>
 
-        <Form.Group
-          as={Col}
-          controlId="stateInput"
-        >
+        <Form.Group as={Col} controlId="stateInput">
           <Form.Label>State</Form.Label>
-          <Form.Select onChange={(e) => setPilotState(e.target.value)}
-          value={pilotState}>
+          <Form.Select
+            onChange={(e) => setPilotState(e.target.value)}
+            value={pilotState}
+          >
             <option>Choose...</option>
             <optgroup label="State">
               <option value="AL">Alabama</option>
@@ -219,13 +218,12 @@ export const EditPilotFormView = ({pilotId}) => {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group
-          as={Col}
-          controlId="postalCodeInput"
-        >
+        <Form.Group as={Col} controlId="postalCodeInput">
           <Form.Label>Postal Code</Form.Label>
-          <Form.Control onChange={(e) => setPostalCode(e.target.value)}
-          value={postalCode} />
+          <Form.Control
+            onChange={(e) => setPostalCode(e.target.value)}
+            value={postalCode}
+          />
         </Form.Group>
       </Row>
 
