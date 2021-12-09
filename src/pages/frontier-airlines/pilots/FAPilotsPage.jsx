@@ -1,26 +1,41 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { HeaderView } from "../../../components/HeaderView/HeaderView";
 import { FooterView } from "../../../components/FooterView/FooterView";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { PilotView } from "../../../components/PilotView/PilotView";
 import AddPilotButtonView from "../../../components/AddPilotButtonView";
-import {
-  selectPilots,
-  updatePilot,
-  addPilot,
-} from "../../../redux/features/pilotsSlice";
+import { selectPilots } from "../../../redux/features/pilotsSlice";
 
 export function FAPilotsPage({ pilots, navBarDropDowns }) {
   const storedPilots = useSelector(selectPilots);
   if (storedPilots && storedPilots.length > 0)
     pilots = storedPilots.filter((pilot) => pilot.airline === "FA");
-  const dispatch = useDispatch();
-  const events = {
-    editPilot: (pilot) => dispatch(updatePilot(pilot)),
-    addPilot: (pilot) => dispatch(addPilot(pilot)),
-  };
+
+  const status = useSelector((state) => state.pilots.status);
+
+  let content;
+
+  if (status === "pending") {
+    content = (
+      <Row>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>{" "}
+        </Spinner>
+      </Row>
+    );
+  } else if (status === "idle") {
+    content = (
+      <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
+        {pilots.map((pilot, index) => (
+          <div key={index}>
+            <PilotView pilot={pilot} avatar={pilot.avatar} />
+          </div>
+        ))}
+      </Row>
+    );
+  }
   return (
     <>
       <HeaderView navBarDropDowns={navBarDropDowns} />
@@ -36,18 +51,7 @@ export function FAPilotsPage({ pilots, navBarDropDowns }) {
             <AddPilotButtonView airlineLink="/Frontier-Airlines/addPilot" />
           </Col>
         </Row>
-        <Row sm={1} md={2} lg={3} className="g-2 g-lg-3">
-          {pilots.map((pilot, index) => (
-            <div key={index}>
-              <PilotView
-                pilot={pilot}
-                index={pilot.crewId}
-                avatar={pilot.avatar}
-                {...events}
-              />
-            </div>
-          ))}
-        </Row>
+        {content}
       </Container>
       <FooterView />
     </>
@@ -57,7 +61,7 @@ export function FAPilotsPage({ pilots, navBarDropDowns }) {
 FAPilotsPage.propTypes = {
   pilots: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      crewId: PropTypes.number.isRequired,
       airline: PropTypes.string.isRequired,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,

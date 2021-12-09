@@ -9,7 +9,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { deletePilot } from "../../redux/features/pilotsSlice";
 import genericIcon from "../../assets/img/genericIcon.png";
 
-export const PilotView = ({ avatar, pilot, index}) => {
+export const PilotView = ({ avatar, pilot}) => {
   const dispatch = useDispatch();
   if (!avatar) {
     avatar = { src: genericIcon, alt: pilot.firstName };
@@ -31,7 +31,9 @@ export const PilotView = ({ avatar, pilot, index}) => {
                 <Button
                   variant="outline-danger"
                   className="mb-3 mt-1 me-1"
-                  onClick={() => dispatch(deletePilot(index))}
+                  onClick={
+                    () => dispatch(deletePilot(pilot.crewId)
+                  )}
                 >
                   Delete
                 </Button>

@@ -5,11 +5,27 @@ import { updatePilot } from "../../redux/features/pilotsSlice";
 import { useNavigate } from "react-router-dom";
 import { selectPilots } from "../../redux/features/pilotsSlice";
 
+const airlineLink = ({ airline }) => {
+  switch (airline) {
+    case "AA":
+      return "/american-airlines/pilots";
+    case "AS":
+      return "/alaska-airlines/pilots";
+    case "FA":
+      return "/frontier-airlines/pilots";
+    case "UP":
+      return "/UPS/pilots";
+    default:
+      return -1;
+  }
+};
+
 export const EditPilotFormView = ({ pilotId }) => {
   const navigate = useNavigate();
   const pilot = useSelector(selectPilots).filter(
     (pilot) => pilot.crewId === parseInt(pilotId)
   )[0];
+  
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(pilot.firstName);
   const [lastName, setLastName] = useState(pilot.lastName);
@@ -54,7 +70,7 @@ export const EditPilotFormView = ({ pilotId }) => {
         suffix: suffix,
         avatar: pilot.avatar,
       }),
-      navigate(-1)
+      navigate(airlineLink(pilot.airline))
     );
   };
   return (

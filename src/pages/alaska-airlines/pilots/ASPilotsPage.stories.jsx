@@ -31,7 +31,7 @@ export const Default = Template.bind({});
 Default.args = {
   pilots: [
     {
-      id: 1,
+      crewId: 1,
       firstName: "John",
       lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
@@ -50,6 +50,7 @@ Default.args = {
       avatar: avatar.john,
     },
     {
+      crewId: 2,
       firstName: "Alex",
       lastName: "Johnathan",
       trainingFacility: "Riviera State 32/106",
@@ -68,6 +69,7 @@ Default.args = {
       avatar: avatar.alex,
     },
     {
+      crewId: 3,
       firstName: "Monica",
       lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
@@ -86,6 +88,7 @@ Default.args = {
       avatar: avatar.monica,
     },
     {
+      crewId: 4,
       firstName: "Michael",
       lastName: "Zimber",
       trainingFacility: "Riviera State 32/106",
@@ -104,6 +107,7 @@ Default.args = {
       avatar: avatar.michael,
     },
     {
+      crewId: 5,
       firstName: "Sandra",
       lastName: "Smith",
       trainingFacility: "Riviera State 32/106",
@@ -122,6 +126,7 @@ Default.args = {
       avatar: avatar.sandra,
     },
     {
+      crewId: 6,
       firstName: "Janet",
       lastName: "Carton",
       trainingFacility: "Riviera State 32/106",

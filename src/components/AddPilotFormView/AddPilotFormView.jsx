@@ -172,7 +172,7 @@ export const AddPilotFormView = ({ airline }) => {
           controlId="stateInput"
         >
           <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose..." onChange={(e) => setPilotState(e.target.value)}
+          <Form.Select onChange={(e) => setPilotState(e.target.value)}
           value={pilotState}>
             <option>Choose...</option>
             <optgroup label="State">

@@ -39,7 +39,7 @@ function App() {
   };
   const db = {
     firstName: "Bill Smith",
-    version: "1.0.0",
+    version: "1.1.0",
     pilots: [
       {
         crewId: 1,
