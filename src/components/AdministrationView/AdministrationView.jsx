@@ -13,5 +13,5 @@ export const AdministrationView = ({ name }) => {
 };
 
 AdministrationView.propTypes = {
-  firstName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };

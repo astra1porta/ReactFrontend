@@ -62,7 +62,7 @@ FAPilotsPage.propTypes = {
   pilots: PropTypes.arrayOf(
     PropTypes.shape({
       crewId: PropTypes.number.isRequired,
-      airline: PropTypes.string.isRequired,
+      airline: PropTypes.string,
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
       fleet: PropTypes.string.isRequired,

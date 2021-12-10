@@ -13,6 +13,6 @@ export const JumbtroView = ({ version, name }) => {
 };
 
 JumbtroView.propTypes = {
-  firstName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   version: PropTypes.string.isRequired,
 };

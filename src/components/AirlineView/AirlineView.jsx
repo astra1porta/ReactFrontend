@@ -21,5 +21,5 @@ export const AirlineView = ({ airlineName, airlinePath }) => {
 
 AirlineView.propTypes = {
   airlineName: PropTypes.string.isRequired,
-  bidTypesPath: PropTypes.string.isRequired,
+  airlinePath: PropTypes.string.isRequired,
 };

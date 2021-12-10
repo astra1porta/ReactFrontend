@@ -37,7 +37,7 @@ export function HomePage({ name, version, navBarDropDowns }) {
   );
 }
 HomePage.propTypes = {
-  firstName: PropTypes.string,
+  name: PropTypes.string,
   version: PropTypes.string,
   navBarDropDowns: PropTypes.arrayOf(
     PropTypes.shape({

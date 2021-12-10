@@ -1,13 +1,9 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { makeRequest } from "../../utils/makeRequest";
 
-
-const pilotsAdapter = createEntityAdapter({
-  selectId: (pilot) => pilot.crewId,
-})
 const initialState = {
-  status: 'idle',
+  status: "idle",
   currentRequestId: "",
   error: null,
   pilots: [],
@@ -80,16 +76,18 @@ export const updatePilot = createAsyncThunk(
       suffix: suffix,
     };
   }
-); 
-export const deletePilot = createAsyncThunk("pilot/delete/:crewId", async(crewId) => {
-  
+);
+export const deletePilot = createAsyncThunk(
+  "pilot/delete/:crewId",
+  async (crewId) => {
     const response = await makeRequest(`/api/pilot/delete/${crewId}`, {
-    method: "delete",
-    crewId: JSON.stringify({crewId})
-  }); 
- 
-  return {response};
-});
+      method: "delete",
+      crewId: JSON.stringify({ crewId }),
+    });
+
+    return { response };
+  }
+);
 export const addPilot = createAsyncThunk(
   "pilot/add",
   async ({
@@ -109,11 +107,12 @@ export const addPilot = createAsyncThunk(
     areaCode,
     prefix,
     suffix,
-    avatar
+    avatar,
   }) => {
     const addResponse = await makeRequest(`/api/pilot/add`, {
       method: "POST",
-      body: JSON.stringify({airline: airline,
+      body: JSON.stringify({
+        airline: airline,
         firstName: firstName,
         lastName: lastName,
         fleet: fleet,
@@ -129,14 +128,15 @@ export const addPilot = createAsyncThunk(
         areaCode: areaCode,
         prefix: prefix,
         suffix: suffix,
-        avatar: avatar
+        avatar: avatar,
       }),
     });
-  return addResponse.json();
-});
+    return addResponse.json();
+  }
+);
 export const pilotsSlice = createSlice({
   name: "pilots",
-  initialState: pilotsAdapter.getInitialState(), 
+  initialState,
   extraReducers: {
     [loadPilots.pending]: (state, action) => {
       state.status = "pending";
@@ -159,33 +159,35 @@ export const pilotsSlice = createSlice({
       state.error = action.error;
     },
     [updatePilot.fulfilled]: (state, action) => {
-      if(action.meta.requestId === state.currentRequestId.requestId)  {
-        const index = state.pilots.findIndex(pilot => pilot.crewId === action.payload.crewId);
-        state.pilots[index] = {...state.pilots[index], ...action.payload};
+      if (action.meta.requestId === state.currentRequestId.requestId) {
+        const index = state.pilots.findIndex(
+          (pilot) => pilot.crewId === action.payload.crewId
+        );
+        state.pilots[index] = { ...state.pilots[index], ...action.payload };
         state.status = "idle";
-        state.currentRequestId = '';
+        state.currentRequestId = "";
       }
     },
     [addPilot.fulfilled]: (state, action) => {
-      const pilot = {...action.meta.arg, crewId: action.payload.crewId}
+      const pilot = { ...action.meta.arg, crewId: action.payload.crewId };
       state.pilots = state.pilots.concat(pilot);
     },
     [deletePilot.pending]: (state, action) => {
       state.currentRequestId = action.meta;
-      state.status = 'pending';
+      state.status = "pending";
     },
     [deletePilot.fulfilled]: (state, action) => {
-      if(parseInt(action.payload.response.status) === 204) {
-        state.pilots = state.pilots.filter(({crewId}) => crewId !== parseInt(action.meta.arg));
-        state.status = 'idle';
-        state.currentRequestId = '';
+      if (parseInt(action.payload.response.status) === 204) {
+        state.pilots = state.pilots.filter(
+          ({ crewId }) => crewId !== parseInt(action.meta.arg)
+        );
+        state.status = "idle";
+        state.currentRequestId = "";
       }
-      
     },
   },
 });
 
 export const selectPilots = (state) => state.pilots.pilots;
-
 
 export default pilotsSlice.reducer;

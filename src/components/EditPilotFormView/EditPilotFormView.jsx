@@ -22,6 +22,7 @@ const airlineLink = ({ airline }) => {
 
 export const EditPilotFormView = ({ pilotId }) => {
   const navigate = useNavigate();
+ 
   const pilot = useSelector(selectPilots).filter(
     (pilot) => pilot.crewId === parseInt(pilotId)
   )[0];
