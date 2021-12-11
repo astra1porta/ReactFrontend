@@ -1,62 +1,108 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import {Row, Col} from 'react-bootstrap';
-import {PilotAvatarView} from "../PilotAvatarView/PilotAvatarView";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Row, Col, Button } from "react-bootstrap";
+import { PilotAvatarView } from "../PilotAvatarView/PilotAvatarView";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { deletePilot } from "../../redux/features/pilotsSlice";
+import genericIcon from "../../assets/img/genericIcon.png";
 
-export const PilotView = ({avatar, pilot}) => {
+export const PilotView = ({ avatar, pilot}) => {
+  const dispatch = useDispatch();
+  if (!avatar) {
+    avatar = { src: genericIcon, alt: pilot.firstName };
+  }
   return (
     <Col>
-    <div className="card">
-      <Row className="g-0 mt-3">
-        <Col className="col-md-4 d-flex flex-column align-items-center">
-          <div>
-          <PilotAvatarView avatar={avatar} />
-          </div>
-          <div>
-            {pilot.seat}{" "}{pilot.fleet}
-          </div>
-          <div>{pilot.domicile}</div>
-        </Col>
-        <Col className="col-md-8">
-          <div className="card-body">
-            <h4 className="card-title">{pilot.name}</h4>
-            <p className="card-text">
-              <span className="text-secondary">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-              </span>{" "}
-              {pilot.location}
-            </p>
-            <p className="card-title">
-              <h5>{pilot.company}</h5>
-            </p>
-            <p className="card-text">
-              <div>{pilot.address}{pilot.address2 ? ", "+pilot.address2 : ""}</div>
-              <div>{pilot.city}{", "}{pilot.state}{"  "}{pilot.postalCode}</div>
-              <div>P: {pilot.phone}</div>
-            </p>
-          </div>
-        </Col>
-      </Row>
-    </div>
+      <div className="card">
+        <Row className="g-0 mt-3">
+          <Col className="col-md-4 d-flex flex-column align-items-center">
+            <div>
+              <PilotAvatarView avatar={avatar} />
+            </div>
+            <div>
+              {pilot.seat} {pilot.fleet}
+            </div>
+            <div>{pilot.domicile}</div>
+            <Row className="flex-inline flex-column no-wrap ">
+              <div>
+                <Button
+                  variant="outline-danger"
+                  className="mb-3 mt-1 me-1"
+                  onClick={
+                    () => dispatch(deletePilot(pilot.crewId)
+                  )}
+                >
+                  Delete
+                </Button>
+
+                <Button
+                  as={Link}
+                  variant="outline-success"
+                  className="mb-3 mt-1"
+                  to={`/editPilot/${pilot.crewId}`}
+                >
+                  Edit
+                </Button>
+              </div>
+            </Row>
+          </Col>
+          <Col className="col-md-8">
+            <div className="card-body">
+              <div className="card-title bold larger">
+                {pilot.firstName} {pilot.lastName}
+              </div>
+              <div className="card-text">
+                <span className="text-secondary">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </span>{" "}
+                {pilot.trainingFacility}
+              </div>
+              <div className="card-title">
+                <h5>{pilot.company}</h5>
+              </div>
+              <div className="card-text">
+                <div>
+                  {pilot.address1}
+                  {pilot.address2 ? ", " + pilot.address2 : ""}
+                </div>
+                <div>
+                  {pilot.city}
+                  {", "}
+                  {pilot.state}
+                  {"  "}
+                  {pilot.postalCode}
+                </div>
+                <div>
+                  P: &#40;{pilot.areaCode}&#41; {pilot.prefix}&#8208;
+                  {pilot.suffix}
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </Col>
   );
 };
 PilotView.propTypes = {
   pilots: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    trainingFacility: PropTypes.string.isRequired,
     company: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
+    address1: PropTypes.string.isRequired,
     address2: PropTypes.number.isRequired,
     city: PropTypes.number.isRequired,
     state: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    areaCode: PropTypes.string.isRequired,
+    prefix: PropTypes.string.isRequired,
+    suffix: PropTypes.string.isRequired,
     fleet: PropTypes.string.isRequired,
     seat: PropTypes.string.isRequired,
     domicile: PropTypes.string.isRequired,
-    avatar: PropTypes.object.isRequired
+    avatar: PropTypes.object.isRequired,
   }),
 };

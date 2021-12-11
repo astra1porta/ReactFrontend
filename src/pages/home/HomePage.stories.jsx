@@ -1,12 +1,14 @@
 import React from "react";
 import { HomePage } from "./HomePage";
+import { store } from "../../redux/store";
+import { Provider } from "react-redux";
 
 export default {
-  title: "Page/HomePage",
+  title: "Pages | Common/HomePage",
   component: HomePage,
 };
 
-const Template = (args) => <HomePage {...args} />;
+const Template = (args) => (<Provider store={store}><HomePage {...args} /></Provider>);
 
 export const Default = Template.bind({});
 Default.args = {

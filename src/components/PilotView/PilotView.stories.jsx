@@ -7,6 +7,8 @@ import john from "../../assets/img/john-smith.jpeg";
 import michael from "../../assets/img/michael-zimber.jpeg";
 import monica from "../../assets/img/monica-smith.jpeg";
 import sandra from "../../assets/img/sandra-smith.jpeg";
+import { store } from "../../redux/store";
+import { Provider } from "react-redux";
 
 export default {
   title: "Components/PilotView",
@@ -23,94 +25,102 @@ const avatar = {
 };
 const pilot = {
   john: {
-    name: "John Smith",
-    location: "Riviera State 32/106",
+    firstName: "John Smith",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "CPT",
     domicile: "GEG",
   },
   alex: {
-    name: "Alex Johnathan",
-    location: "Riviera State 32/106",
+    firstName: "Alex Johnathan",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "CPT",
     domicile: "GEG",
   },
   monica: {
-    name: "Monica Smith",
-    location: "Riviera State 32/106",
+    firstName: "Monica Smith",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "CPT",
     domicile: "GEG",
   },
   michael: {
-    name: "Michael Zimber",
-    location: "Riviera State 32/106",
+    firstName: "Michael Zimber",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "CPT",
     domicile: "GEG",
   },
   sandra: {
-    name: "Sandra Smith",
-    location: "Riviera State 32/106",
+    firstName: "Sandra Smith",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "CPT",
     domicile: "GEG",
   },
   janet: {
-    name: "Janet Carton",
-    location: "Riviera State 32/106",
+    firstName: "Janet Carton",
+    trainingFacility: "Riviera State 32/106",
     company: "Twitter, Inc.",
     address: "795 Folsom Ave",
     address2: "Suite 600",
     city: "San Francisco",
     state: "CA",
     postalCode: "94107",
-    phone: "(123) 456-7890",
+    areaCode: "123",
+    prefix: "456",
+    suffix: "7890",
     fleet: "737",
     seat: "FO",
     domicile: "GEG",
   },
 };
-const Template = (args) => <PilotView {...args} />;
+const Template = (args) => (<Provider store={store}><PilotView {...args} /></Provider>);
 export const Default = Template.bind({});
-Default.args = {avatar: avatar.alex, pilot: pilot.alex};
-
-
-
-
+Default.args = { avatar: avatar.alex, pilot: pilot.alex };

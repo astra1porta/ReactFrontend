@@ -1,19 +1,17 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Navbar, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import {} from "react-bootstrap";
 import { LogoView } from "../LogoView/LogoView";
 import NavBarView from "../NavBarView";
-import { NavBarDropDownView } from "../NavBarDropDownView/NavBarDropDownView";
+import { Link } from "react-router-dom";
 
 export function HeaderView({ navBarDropDowns }) {
-  navBarDropDowns = navBarDropDowns || [];
+  navBarDropDowns = useSelector((state) => state.navBarDropDowns);
   return (
     <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Container fluid className="bg-bidpro ">
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/">
           <LogoView />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -27,6 +25,10 @@ export function HeaderView({ navBarDropDowns }) {
 
 HeaderView.propTypes = {
   navBarDropDowns: PropTypes.arrayOf(
-    NavBarDropDownView.propTypes.navBarDropDown
-  ).isRequired,
+    PropTypes.shape({
+      airlineName: PropTypes.string.isRequired,
+      bidTypesPath: PropTypes.string.isRequired,
+      pilotsPath: PropTypes.string.isRequired,
+    })
+  ),
 };
